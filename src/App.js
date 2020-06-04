@@ -1,48 +1,68 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import SignUp from './Signup'
-import Login from './Login'
-import Home from './Home'
+import Header from './Header'
+import SignInForm from './SignInForm';
+import LoginForm from './LoginForm'
 
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Link,
-  useHistory
-} from "react-router-dom";
+function App() {
+  const [user, setUser] = useState({})
+  const [form, setForm] = useState("")
 
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      fetch(`http://localhost:3001/auto_login`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          setUser(data)
+          // console.log(data)
+        })
+    }
+  }, [])
 
-class App extends Component {
-
-
-
-
-  render() {
-    return (
-      <div>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-
-            <Route exact path='/Login'>
-              <Login />
-            </Route>
-
-            <Route exact path='/Signup'>
-              <SignUp />
-            </Route>
-
-
-
-          </Switch>
-        </BrowserRouter>
-      </div>
-    );
+  const handleLogin = (user) => {
+    setUser(user)
   }
+
+  const handleFormSwitch = (input) => {
+    setForm(input)
+  }
+
+  const handleAuthClick = () => {
+    const token = localStorage.getItem("token")
+    fetch(`http://localhost:3001/user_is_authed`, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+      .then(resp => resp.json())
+      .then(data => console.log(data))
+  }
+
+  console.log(user)
+
+  const renderForm = () => {
+    switch (form) {
+      case "login":
+        return <LoginForm handleLogin={handleLogin} />
+        break;
+      default:
+        return <SignInForm handleLogin={handleLogin} />
+    }
+  }
+  return (
+    <div className="App">
+      <Header handleFormSwitch={handleFormSwitch} />
+      {
+        renderForm()
+      }
+      <button onClick={handleAuthClick} className="ui button">Access Authorized Route</button>
+    </div>
+  );
 }
 
 export default App;
