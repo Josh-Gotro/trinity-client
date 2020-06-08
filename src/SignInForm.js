@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 
 function SignInForm(props) {
     const [username, setUsername] = useState("")
@@ -25,11 +25,11 @@ function SignInForm(props) {
                 password
             })
         })
-            .then(resp => resp.json())
-            .then(data => {
-                localStorage.setItem("token", data.jwt)
-                props.handleLogin(data.user)
-            })
+        .then(resp => resp.json())
+        .then(data => {
+            localStorage.setItem("token", data.jwt)
+            props.handleLogin(data.user)
+        })
         setUsername("")
         setPassword("")
     }
@@ -38,21 +38,21 @@ function SignInForm(props) {
         padding: "20px",
         width: "80%"
     }
-
-    return (
+    
+    return(
         <div style={formDivStyle}>
-            <h1>Sign Up</h1>
+            <h1>Trinity</h1>
             <form className="ui form" onSubmit={handleSubmit}>
                 <div className="field">
                     <label>Username</label>
-                    <input value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
+                    <input value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
                 </div>
                 <div className="field">
                     <label>Password</label>
-                    <input value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
+                    <input value={password} onChange={handlePasswordChange} type="password" placeholder="password"/>
                 </div>
-
-                <button className="ui button" type="submit">Submit</button>
+                
+                <button className="ui button" type="submit">Create Account</button>
             </form>
         </div>
     )

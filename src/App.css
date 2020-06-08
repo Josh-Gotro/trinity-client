@@ -1,4 +1,4 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
 }
@@ -12,7 +12,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: whitesmoke;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,4 +24,29 @@
 
 .App-link {
   color: #09d3ac;
-} */
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: whitesmoke;
+  color: black;
+
+}
+
+.nav-links {
+  background-color: whitesmoke;
+  color: black;
+  width: 40%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+}
+
+.hidden {
+  display: none;
+}
+
