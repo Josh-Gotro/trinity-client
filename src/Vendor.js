@@ -15,7 +15,7 @@ class Vendor extends Component {
     render() {
         return (
             <div>
-                    {/* {console.log(localStorage)} */} main page contentfsnlskdj
+                    {/* {console.log(localStorage)} */} main dfsf ds f asd 
             </div>
         );
     }
