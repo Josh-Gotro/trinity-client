@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import SignInForm from './SignInForm';
 import LoginForm from './LoginForm';
+import { currentUser } from './services/Atom';
+import { useRecoilState } from 'recoil';
 import './App.css';
-import { setCurrentUser, setCurrentForm} from './services/Atom'
-import {  useRecoilState, } from 'recoil';
 
 
 function Home(props) {
     const [user, setUser] = useState({})
     const [form, setForm] = useState("")
+    const [person, setPerson] = useRecoilState(currentUser);
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -20,14 +21,16 @@ function Home(props) {
             })
                 .then(resp => resp.json())
                 .then(data => {
-                    setUser(data)
+                    setUser(data);
+                    setPerson(data)
                     // console.log(data)
                 })
         }
     }, [])
 
     const handleLogin = (user) => {
-        setUser(user)
+        setUser(user);
+        setPerson(user)
     }
 
     const handleFormSwitch = (input) => {
@@ -46,8 +49,6 @@ function Home(props) {
             .then(data => console.log(data))
     }
 
-    console.log(user)
-
     const renderForm = () => {
         switch (form) {
             case "login":
@@ -60,7 +61,7 @@ function Home(props) {
     }
 
     const whoisuser = () => {
-        console.log(user)
+        console.log(person)
     }
     return (
         <div>

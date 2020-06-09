@@ -50,3 +50,7 @@ nav {
   display: none;
 }
 
+.unhidden {
+  display: inline;
+}
+
