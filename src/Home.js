@@ -6,7 +6,7 @@ import { useRecoilState } from 'recoil';
 import './App.css';
 
 
-function Home(props) {
+function Home() {
     const [user, setUser] = useState({})
     const [form, setForm] = useState("")
     const [person, setPerson] = useRecoilState(currentUser);

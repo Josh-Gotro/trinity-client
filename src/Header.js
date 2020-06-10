@@ -1,14 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { currentUser } from './services/Atom';
-import { useRecoilValue, } from 'recoil';
+import { useRecoilValue,  } from 'recoil';
 import './App.css';
 
 
 
 function Header() {
-    const current = useRecoilValue(currentUser);
-    
+    let current = useRecoilValue(currentUser);
+
     const toggleNavLink = () => {
         if (current !== undefined) {
             return <>
@@ -28,7 +28,7 @@ function Header() {
                 <h1 >Trinity</h1>
             </Link>
 
-            <li >Logout</li>
+            <li onClick={logoutUser}>Logout</li>
             </>
         } else { 
             return <>
@@ -39,7 +39,17 @@ function Header() {
         }
     }
 
-    console.log(current)
+
+    const logoutUser = () => {
+        localStorage.removeItem("token");
+        toggleNavLink();
+        // console.log(current)
+        // current = undefined;
+        // console.log(current)
+
+    }
+
+    // console.log(current)
     
     return (
         <div>
