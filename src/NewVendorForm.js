@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { currentUser } from './services/Atom';
 import { useRecoilValue } from 'recoil';
-
+import { Redirect } from 'react-router-dom'; 
 function NewVendorForm(props) {
     const [companyName, setCompanyName] = useState("");
     const [description, setDescription] = useState("");
@@ -20,6 +20,7 @@ function NewVendorForm(props) {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
+                user_id: crrntUser.id,
                 name: companyName,
                 description: description, 
                 rep: rep,
@@ -28,12 +29,12 @@ function NewVendorForm(props) {
         })
             .then(resp => resp.json())
             .then(data => {
-                localStorage.setItem("token", data.jwt)
-                
+                localStorage.setItem("token", data.jwt);
+                // window.location.reload(false);
             })
     }
 
-
+ 
 
     const logit = () => {
         console.log(crrntUser.id)

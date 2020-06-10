@@ -20,12 +20,12 @@ function Home() {
                     Authorization: `Bearer ${token}`
                 }
             })
-                .then(resp => resp.json())
-                .then(data => {
-                    setUser(data);
-                    setPerson(data)
-                    // console.log(data)
-                })
+            .then(resp => resp.json())
+            .then(data => {
+                setUser(data);
+                setPerson(data)
+                // console.log(data)
+            })
         }
     }, [])
 

@@ -21,18 +21,18 @@ function VendorsList() {
 
     let crrntUser = useRecoilValue(currentUser);
 
-    
+
 
     useEffect(() => {
         const token = localStorage.getItem("token")
         if (token) {
-        fetch("http://localhost:3001/vendors", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            } 
-        })
-        .then(r => r.json())
-        .then(vend => setVendors(vend) )
+            fetch("http://localhost:3001/vendors", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(r => r.json())
+                .then(vend => setVendors(vend))
         }
     }, [])
 
@@ -50,20 +50,24 @@ function VendorsList() {
     }, [])
 
     const myVendors = () => {
-        console.log(vendors)
-        console.log(crrntUser)
-        // if (priceLists.length > 0) { 
-        //  vendors.map(vendor => {
-        //     if (vendor.user_id === crrntUser.id){
-        //         return <Vendor key={vendor.id} toggle={togglePL} vendorClick={handleVClick} vendorInfo={vendor}/>
-        //     }
-        // });
-        // }
-        console.log(priceLists.length)
-    }
+        // console.log(vendors)
+         if (vendors.length > 0) {
+             return vendors.filter(vendor => vendor.user_id === crrntUser.id)
+                 .map(vendor => <Vendor key={vendor.id} vendorClick={handleVendorClick} vendorInfo={vendor} />)
+         }
 
-    const handleVClick = (e) => {
-        console.log(crrntUser)
+        // if (priceLists.length > 0) {
+        //     return priceLists.filter(pl => pl.user_id === crrntUser.id)
+        //         .map(pl => <Vendor key={pl.id} vendorClick={handleVendorClick} vendorInfo={pl} />)
+        // };
+    }
+    // console.log(vendors)
+    // console.log(priceLists.length)
+    // console.log(current.id)
+
+
+    const handleVendorClick = (e) => {
+        // console.log(crrntUser)
         setCurVend(e)
         // console.log(curVend)
         togglePL()
@@ -81,11 +85,12 @@ function VendorsList() {
     const togglePL = () => {
         setShowPL(prev => !prev)
     }
-    
+
     return (
         <div>
             <div>
-                {myVendors()} 
+                {/* {console.log(crrntUser)} */}
+                {myVendors()}
             </div>
             <div>
                 {<button onClick={toggleVendorForm}>Add Vendor</button>}<br></br>
@@ -98,11 +103,11 @@ function VendorsList() {
                 {showPLForm ? <NewPLForm userInfo={crrntUser} /> : null}
             </div>
             <div>
-                {showPL ? <PriceListCompare currentVendor={curVend} userInfo={crrntUser} />: null}
+                {showPL ? <PriceListCompare currentVendor={curVend} userInfo={crrntUser} /> : null}
             </div>
         </div>
     );
-    
+
 }
 
 
