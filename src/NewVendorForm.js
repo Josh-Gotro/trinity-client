@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { currentUser } from './services/Atom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { currentVendors } from './services/Atom';
 import { Redirect } from 'react-router-dom'; 
+import LoginForm from './LoginForm';
+
+
 function NewVendorForm(props) {
+    const [vendors, setVendors] = useRecoilState(currentVendors);
     const [companyName, setCompanyName] = useState("");
     const [description, setDescription] = useState("");
     const [rep, setRep] = useState("");
@@ -30,7 +35,8 @@ function NewVendorForm(props) {
             .then(resp => resp.json())
             .then(data => {
                 localStorage.setItem("token", data.jwt);
-                // window.location.reload(false);
+                // console.log(data);
+                setVendors(prev => [...prev, data])
             })
     }
 

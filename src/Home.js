@@ -24,7 +24,7 @@ function Home() {
             .then(data => {
                 setUser(data);
                 setPerson(data)
-                // console.log(data)
+                
             })
         }
     }, [])
