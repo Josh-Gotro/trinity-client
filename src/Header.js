@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { currentUser } from './services/Atom';
-import { useRecoilValue,  } from 'recoil';
+import { useRecoilValue  } from 'recoil';
 import './App.css';
 
 
@@ -41,6 +41,7 @@ function Header() {
 
 
     const logoutUser = () => {
+        // console.log(current)
         localStorage.removeItem("token");
         toggleNavLink();
         // console.log(current)

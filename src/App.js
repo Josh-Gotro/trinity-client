@@ -10,7 +10,7 @@ import Home from './Home';
 import { RecoilRoot, 
   // atom, selector, useRecoilState, useRecoilValue, initializeState
 } from 'recoil';
-import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'; 
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
 
 
 function App() {

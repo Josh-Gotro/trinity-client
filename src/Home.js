@@ -10,6 +10,7 @@ function Home() {
     const [user, setUser] = useState({})
     const [form, setForm] = useState("")
     const [person, setPerson] = useRecoilState(currentUser);
+    // let crrnt = useRecoilValue(currentUser)
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -62,6 +63,8 @@ function Home() {
 
     const whoisuser = () => {
         console.log(person)
+        // console.log(crrnt)
+        console.log(user)
     }
     return (
         <div>

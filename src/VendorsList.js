@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import Vendor from './Vendor'
+import PriceListCompare from './PriceListCompare'
 import NewVendorForm from './NewVendorForm';
 import NewPLForm from './NewPLForm';
 import { currentVendors } from './services/Atom';
 import { currentPriceLists } from './services/Atom';
 import { currentUser } from './services/Atom';
+import { selectedVendor } from './services/Atom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 
 function VendorsList() {
     const [vendors, setVendors] = useRecoilState(currentVendors);
     const [priceLists, setPriceLists] = useRecoilState(currentPriceLists);
+    const [curVend, setCurVend] = useRecoilState(selectedVendor);
+
     const [showVendorForm, setShowVendorForm] = useState(false);
     const [showPLForm, setShowPLForm] = useState(false);
-    let current = useRecoilValue(currentUser);
+    const [showPL, setShowPL] = useState(false);
+
+    let crrntUser = useRecoilValue(currentUser);
+
     
 
     useEffect(() => {
@@ -43,17 +50,27 @@ function VendorsList() {
     }, [])
 
     const myVendors = () => {
-        if (priceLists.length > 0) { 
-        return priceLists.map(pl => {
-            if (pl.user_id === current.id){
-                return <Vendor key={pl.id} vendorInfo={pl}/>
-            }
-        });
-        }
-        // console.log(vendors)
-        // console.log(priceLists.length)
-        // console.log(current.id)
+        console.log(vendors)
+        console.log(crrntUser)
+        // if (priceLists.length > 0) { 
+        //  vendors.map(vendor => {
+        //     if (vendor.user_id === crrntUser.id){
+        //         return <Vendor key={vendor.id} toggle={togglePL} vendorClick={handleVClick} vendorInfo={vendor}/>
+        //     }
+        // });
+        // }
+        console.log(priceLists.length)
     }
+
+    const handleVClick = (e) => {
+        console.log(crrntUser)
+        setCurVend(e)
+        // console.log(curVend)
+        togglePL()
+        // selectedVendor(e)
+    }
+
+
 
     const toggleVendorForm = () => {
         setShowVendorForm(prev => !prev)
@@ -61,19 +78,28 @@ function VendorsList() {
     const togglePLForm = () => {
         setShowPLForm(prev => !prev)
     }
+    const togglePL = () => {
+        setShowPL(prev => !prev)
+    }
     
     return (
         <div>
             <div>
                 {myVendors()} 
+            </div>
+            <div>
                 {<button onClick={toggleVendorForm}>Add Vendor</button>}<br></br>
                 {<button onClick={togglePLForm}>New Price List</button>}
             </div>
             <div>
-                {showVendorForm ? <NewVendorForm  userInfo={current} /> : null}
-                
+                {showVendorForm ? <NewVendorForm userInfo={crrntUser} /> : null}
             </div>
-            {showPLForm ? <NewPLForm userInfo={current} /> : null}
+            <div>
+                {showPLForm ? <NewPLForm userInfo={crrntUser} /> : null}
+            </div>
+            <div>
+                {showPL ? <PriceListCompare currentVendor={curVend} userInfo={crrntUser} />: null}
+            </div>
         </div>
     );
     

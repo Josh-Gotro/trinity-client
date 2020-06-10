@@ -15,6 +15,13 @@ export const currentPriceLists = atom({
     default: {}, // default value (aka initial value)
 });
 
+export const selectedVendor = atom({
+    key: 'selectedVendor', // unique ID (with respect to other atoms/selectors)
+    default: {}, // default value (aka initial value)
+});
+
+
+
 
 
 
