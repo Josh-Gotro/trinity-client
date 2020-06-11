@@ -20,6 +20,11 @@ export const selectedVendor = atom({
     default: {}, // default value (aka initial value)
 });
 
+export const currentItems = atom({
+    key: 'currentItems', // unique ID (with respect to other atoms/selectors)
+    default: {}, // default value (aka initial value)
+});
+
 
 
 

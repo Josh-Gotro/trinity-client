@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ListItems from './ListItems'
 import { currentVendors } from './services/Atom';
-// import { currentPriceLists } from './services/Atom';
 import { currentUser } from './services/Atom';
 import { useRecoilValue } from 'recoil';
 import { useForm } from "react-hook-form";
@@ -12,9 +12,14 @@ function NewPLForm(props) {
     const [plid, setPlid] = useState("")
     const [showCreate, setCreate] = useState(true);
     const [showAddItem, setAddItem] = useState(false);
+    const [newItems, setNewItems] = useState([]);
 
     let vendors = useRecoilValue(currentVendors)
     let crrntUser = useRecoilValue(currentUser)
+
+    // useEffect(() => {
+   
+    // }, [])
 
     const vendorOptions = () => {
         // console.log(vendors)
@@ -25,8 +30,7 @@ function NewPLForm(props) {
     }
 
     const onSubmit = (data, r ) => {
-        alert(`Price List Created`)
-        console.log(data);
+        // console.log(data);
 
         fetch(`http://localhost:3001/price_lists`, {
             method: "POST",
@@ -52,7 +56,11 @@ function NewPLForm(props) {
     }
 
     const onItemSubmit = (data, r) => {
-        console.log(data)
+        // console.log(data)
+        setNewItems(newItems => [...newItems, data])
+        // setNewItems(data)
+         r.target.reset();
+
     }
 
     const toggleCreate = () => {
@@ -64,9 +72,13 @@ function NewPLForm(props) {
     }
 
     const finishSequence = () => {
+        alert(`Price List Created`)
         props.toggle()
     }
 
+    const listItems = () => {
+        return <ListItems items={newItems}/>
+    }
 
     return (
         <div>
@@ -87,18 +99,18 @@ function NewPLForm(props) {
                 </label>
                 {showCreate ? <input type="submit" value="Create Price List" /> : null}<br></br><br></br>
             </form> 
-
+            {listItems()}
             <form onSubmit={handleSubmit(onItemSubmit)}>
                 {showAddItem ? <label>
                     Item Name:
-                    <input type="text" name="name1" ref={register} />
+                    <input type="text" name="name" ref={register} />
                     $
-                    < input type = "number" step = '0.01' placeholder = '0.00' name = "price1" ref = { register } />
+                    < input type = "number" step = '0.01' placeholder = '0.00' name = "price" ref = { register } />
                     per
-                    < input type="text" name="size1" ref={register} /> <br></br>
+                    < input type="text" name="size" ref={register} /> <br></br>
 
                 </label> : null}
-                {showAddItem ? <input type="submit" value="Add Item" /> : null}
+                {showAddItem ? <input type="submit" value="+ Item" /> : null}
             </form> 
                 {showAddItem ? <button type="button" onClick={finishSequence} >finished</button> : null}
 

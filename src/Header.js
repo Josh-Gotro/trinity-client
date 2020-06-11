@@ -41,8 +41,8 @@ function Header() {
 
 
     const logoutUser = () => {
-        // console.log(current)
-        localStorage.removeItem("token");
+        console.log(current)
+        // localStorage.removeItem("token");
         toggleNavLink();
         // console.log(current)
         // current = undefined;
