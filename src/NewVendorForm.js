@@ -8,7 +8,7 @@ import LoginForm from './LoginForm';
 
 function NewVendorForm(props) {
     const [vendors, setVendors] = useRecoilState(currentVendors);
-    
+
     const [companyName, setCompanyName] = useState("");
     const [description, setDescription] = useState("");
     const [rep, setRep] = useState("");
@@ -34,11 +34,12 @@ function NewVendorForm(props) {
                 contact: contactInfo
             })
         })
-            .then(resp => resp.json())
-            .then(data => {
+        .then(resp => resp.json())
+        .then(data => {
                 localStorage.setItem("token", data.jwt);
                 setVendors(prev => [...prev, data]);
-            })
+        })
+        props.toggle()
     }
 
  

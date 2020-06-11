@@ -55,16 +55,7 @@ function VendorsList() {
              return vendors.filter(vendor => vendor.user_id === crrntUser.id)
                  .map(vendor => <Vendor key={vendor.id} vendorClick={handleVendorClick} vendorInfo={vendor} />)
          }
-
-        // if (priceLists.length > 0) {
-        //     return priceLists.filter(pl => pl.user_id === crrntUser.id)
-        //         .map(pl => <Vendor key={pl.id} vendorClick={handleVendorClick} vendorInfo={pl} />)
-        // };
     }
-    // console.log(vendors)
-    // console.log(priceLists.length)
-    // console.log(current.id)
-
 
     const handleVendorClick = (e) => {
         // console.log(crrntUser)
@@ -73,8 +64,6 @@ function VendorsList() {
         togglePL()
         // selectedVendor(e)
     }
-
-
 
     const toggleVendorForm = () => {
         setShowVendorForm(prev => !prev)
@@ -100,10 +89,10 @@ function VendorsList() {
                 {showVendorForm ? <NewVendorForm toggle={toggleVendorForm} userInfo={crrntUser} /> : null}
             </div>
             <div>
-                {showPLForm ? <NewPLForm userInfo={crrntUser} /> : null}
+                {showPLForm ? <NewPLForm toggle={togglePLForm} userInfo={crrntUser} /> : null}
             </div>
             <div>
-                {showPL ? <PriceListCompare currentVendor={curVend} userInfo={crrntUser} /> : null}
+                {showPL ? <PriceListCompare  currentVendor={curVend} userInfo={crrntUser} /> : null}
             </div>
         </div>
     );

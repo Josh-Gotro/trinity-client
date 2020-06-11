@@ -6,8 +6,12 @@ import { useRecoilValue } from 'recoil';
 import { useForm } from "react-hook-form";
 
 
-function NewPLForm() {
+function NewPLForm(props) {
     const { register, handleSubmit, errors } = useForm();
+
+    const [plid, setPlid] = useState("")
+    const [showCreate, setCreate] = useState(true);
+    const [showAddItem, setAddItem] = useState(false);
 
     let vendors = useRecoilValue(currentVendors)
     let crrntUser = useRecoilValue(currentUser)
@@ -20,33 +24,49 @@ function NewPLForm() {
             }
     }
 
-    const onSubmit = (e, r ) => {
-        // e.preventDefault()
+    const onSubmit = (data, r ) => {
         alert(`Price List Created`)
-        console.log(e);
-        
+        console.log(data);
 
-        // fetch(`http://localhost:3001/vendors`, {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Accept": "application/json"
-        //     },
-        //     body: JSON.stringify({
-        //         user_id: crrntUser.id,
-        //         name: companyName,
-        //         description: description,
-        //         rep: rep,
-        //         contact: contactInfo
-        //     })
-        // })
-        //     .then(resp => resp.json())
-        //     .then(data => {
-        //         localStorage.setItem("token", data.jwt);
-        //         setVendors(prev => [...prev, data]);
-        //     })
-        r.target.reset()
+        fetch(`http://localhost:3001/price_lists`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                user_id: crrntUser.id,
+                vendor_id: data.vendor,
+                date: data.date,
+            })
+        })
+            .then(resp => resp.json())
+            .then(dta => {
+                localStorage.setItem("token", dta.jwt);
+                setPlid(dta.id)
+                console.log(plid)
+                toggleCreate()
+                toggleAddItem()
+            })
+        // r.target.reset();
     }
+
+    const onItemSubmit = (data, r) => {
+        console.log(data)
+    }
+
+    const toggleCreate = () => {
+        setCreate(prev => !prev)
+    }
+
+    const toggleAddItem = () => {
+        setAddItem(prev => !prev)
+    }
+
+    const finishSequence = () => {
+        props.toggle()
+    }
+
 
     return (
         <div>
@@ -64,40 +84,28 @@ function NewPLForm() {
                     <input type="date" name="date" ref={register({required: true})} />
                     {errors.date && <p>Please select date. </p>}<br></br><br></br>
 
+                </label>
+                {showCreate ? <input type="submit" value="Create Price List" /> : null}<br></br><br></br>
+            </form> 
+
+            <form onSubmit={handleSubmit(onItemSubmit)}>
+                {showAddItem ? <label>
                     Item Name:
                     <input type="text" name="name1" ref={register} />
                     $
-                    <input type="number" name="price1" ref={register} />
+                    < input type = "number" step = '0.01' placeholder = '0.00' name = "price1" ref = { register } />
                     per
-                    <input type="text" name="size1" ref={register} /><br></br>
+                    < input type="text" name="size1" ref={register} /> <br></br>
 
-                    Item Name:
-                    <input type="text" name="name2" ref={register}  />
-                    $
-                    <input type="number" name="price2" ref={register} />
-                    per
-                    <input type="text" name="size2" ref={register} /><br></br>
-
-                    Item Name:
-                    <input type="text" name="name3" ref={register} />
-                    $
-                    <input type="number" name="price3" ref={register}  />
-                    per
-                    <input type="text" name="size3" ref={register} /><br></br>
-
-                    Item Name:
-                    <input type="text" name="name4" ref={register}  />
-                    $
-                    <input type="number" name="price4" ref={register}  />
-                    per
-                    <input type="text" name="size4" ref={register} /><br></br>
-
-                </label>
-                <input type="submit" value="Save Price List" />
-            </form>
+                </label> : null}
+                {showAddItem ? <input type="submit" value="Add Item" /> : null}
+            </form> 
+                {showAddItem ? <button type="button" onClick={finishSequence} >finished</button> : null}
 
         </div>
     );
 }
 
 export default NewPLForm;
+
+
