@@ -97,7 +97,7 @@ function VendorsList() {
                 {<button onClick={togglePLForm}>New Price List</button>}
             </div>
             <div>
-                {showVendorForm ? <NewVendorForm userInfo={crrntUser} /> : null}
+                {showVendorForm ? <NewVendorForm toggle={toggleVendorForm} userInfo={crrntUser} /> : null}
             </div>
             <div>
                 {showPLForm ? <NewPLForm userInfo={crrntUser} /> : null}

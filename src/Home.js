@@ -14,8 +14,9 @@ function Home() {
 
     useEffect(() => {
         const token = localStorage.getItem("token")
+
         if (token) {
-            fetch(`http://localhost:3001/auto_login`, {
+            fetch(`http://localhost:3001/auto_login`,  {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -24,9 +25,9 @@ function Home() {
             .then(data => {
                 setUser(data);
                 setPerson(data)
-                
             })
         }
+        
     }, [])
 
     const handleLogin = (user) => {

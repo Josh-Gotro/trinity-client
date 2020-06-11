@@ -8,10 +8,12 @@ import LoginForm from './LoginForm';
 
 function NewVendorForm(props) {
     const [vendors, setVendors] = useRecoilState(currentVendors);
+    
     const [companyName, setCompanyName] = useState("");
     const [description, setDescription] = useState("");
     const [rep, setRep] = useState("");
     const [contactInfo, setContactInfo] = useState("");
+
     let crrntUser = useRecoilValue(currentUser)
 
     const handleSubmit = (e) => {
@@ -35,20 +37,19 @@ function NewVendorForm(props) {
             .then(resp => resp.json())
             .then(data => {
                 localStorage.setItem("token", data.jwt);
-                // console.log(data);
-                setVendors(prev => [...prev, data])
+                setVendors(prev => [...prev, data]);
             })
     }
 
  
 
     const logit = () => {
-        console.log(crrntUser.id)
+        // console.log(crrntUser.id)
         console.log(props)
-        console.log(companyName)
-        console.log(description)
-        console.log(rep)
-        console.log(contactInfo)
+        // console.log(companyName)
+        // console.log(description)
+        // console.log(rep)
+        // console.log(contactInfo)
     }
 
     return (
@@ -68,7 +69,9 @@ function NewVendorForm(props) {
                     Contact Info:
                     <input type="text" name="name" onChange={e => setContactInfo(e.target.value)}/><br></br>
                 </label>
+            
                 <input type="submit" value="Save Vendor" />
+                
             </form>
             
         </div>
