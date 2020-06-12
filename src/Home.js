@@ -27,7 +27,7 @@ function Home() {
                 setPerson(data)
             })
         }
-    }, [])
+    }, [setPerson])
 
     const handleLogin = (user) => {
         setUser(user);
@@ -53,11 +53,11 @@ function Home() {
     const renderForm = () => {
         switch (form) {
             case "login":
-                return <LoginForm handleLogin={handleLogin} />
-                break;
+                return <LoginForm handleLogin={handleLogin} />;
             case "signUp":
-                // default:
-                return <SignInForm handleLogin={handleLogin} />
+                return <SignInForm handleLogin={handleLogin} />;
+            default:    
+                return <LoginForm handleLogin={handleLogin} />;
         }
     }
 
@@ -73,9 +73,8 @@ function Home() {
             {
                 renderForm()
             }
-
-            <button className="ui button" onClick={() => handleFormSwitch("signUp")}>Sign Up</button>
             <button className="ui button" onClick={() => handleFormSwitch("login")}>Log In</button>
+            <button className="ui button" onClick={() => handleFormSwitch("signUp")}>Sign Up</button>
         </div>
     );
 };

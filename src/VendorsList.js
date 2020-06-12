@@ -37,7 +37,7 @@ function VendorsList() {
                 .then(r => r.json())
                 .then(vend => setVendors(vend))
         }
-    }, [])
+    }, [setVendors])
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -50,7 +50,7 @@ function VendorsList() {
                 .then(r => r.json())
                 .then(plists => setPriceLists(plists))
         }
-    }, [])
+    }, [setPriceLists])
 
     const myVendors = () => {
         // console.log(vendors)
