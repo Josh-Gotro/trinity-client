@@ -2,12 +2,12 @@ import React from 'react';
 import Item from './Item';
 
 function PriceList({plInfo}){
-    const {items, item_details, date} = plInfo
+    const {items, item_details} = plInfo
     // console.log(items, item_details, date)
 
     const plItem = () => {
         return items.map(item =>{
-            item_details.filter(itemD => item.id === itemD.id)
+            return item_details.filter(itemD => item.id === itemD.id)
             .map(i => {
                 console.log(i)
                 return <Item key={i.id} itemDetails={i} itemName={item.name}/>

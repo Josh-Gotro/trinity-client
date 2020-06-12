@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { currentUser } from './services/Atom';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { currentVendors } from './services/Atom';
-import { Redirect } from 'react-router-dom'; 
-import LoginForm from './LoginForm';
 
 
 function NewVendorForm(props) {

@@ -60,7 +60,7 @@ function VendorsList() {
     const handleVendorClick = (e) => {
         // console.log(crrntUser)
         setCurVend(e)
-        // console.log(curVend)
+        console.log(priceLists)
         togglePL()
         // selectedVendor(e)
     }
