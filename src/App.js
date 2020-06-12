@@ -17,7 +17,6 @@ function App() {
 
   return (
     <Router>
-        {/* <RecoilRoot initializeState={initializeState}> */}
         <RecoilRoot>
           <div className="App">
             <Header />

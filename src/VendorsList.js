@@ -8,6 +8,7 @@ import { currentPriceLists } from './services/Atom';
 import { currentUser } from './services/Atom';
 import { selectedVendor } from './services/Atom';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import { useHistory } from 'react-router-dom';
 
 
 function VendorsList() {
@@ -20,6 +21,7 @@ function VendorsList() {
     const [showPL, setShowPL] = useState(false);
 
     let crrntUser = useRecoilValue(currentUser);
+    let history = useHistory();
 
 
 
@@ -70,14 +72,16 @@ function VendorsList() {
         if (crrntUser.id) {
             return setShowVendorForm(prev => !prev)
         } else {
-            return alert("Please login")
+            history.push('/home')
+            return alert("Please login or sign up")
         };
     }
     const togglePLForm = () => {
         if (crrntUser.id) {
             return setShowPLForm(prev => !prev)
         } else {
-            return alert("Please login")
+            history.push('/home')
+            return alert("Please login or sign up")
         };
     }
     const togglePL = () => {

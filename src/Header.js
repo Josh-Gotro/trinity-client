@@ -1,12 +1,8 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { currentUser } from './services/Atom';
-import {  useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import './App.css';
-
-
-
-
 
 function Header() {
     const [person, setPerson] = useRecoilState(currentUser);
@@ -15,33 +11,32 @@ function Header() {
     const toggleNavLink = () => {
         if (person.id !== undefined) {
             return <>
-            <Link to="/vendors">
-                <li>Vendors</li>
-            </Link>
+                <Link to="/vendors">
+                    <li>Vendors</li>
+                </Link>
 
-            <Link to="home">
-                <li>Items</li>
-            </Link>
+                <Link to="home">
+                    <li>Items</li>
+                </Link>
 
-            <Link to="home">
-                <li >Price Lists</li>
-            </Link>
+                <Link to="home">
+                    <li >Price Lists</li>
+                </Link>
 
-            <Link to="home">
-                <h1 >Trinity</h1>
-            </Link>
+                <Link to="home">
+                    <h1 >Trinity</h1>
+                </Link>
 
-            <li onClick={logoutUser}>Logout</li>
+                <li onClick={logoutUser}>Logout</li>
             </>
-        } else { 
+        } else {
             return <>
-            <Link to="home">
-                <h1 >Trinity</h1>
-            </Link>
+                <Link to="home">
+                    <h1 >Trinity</h1>
+                </Link>
             </>
         }
     }
-
 
     const logoutUser = () => {
         console.log(person)
@@ -49,14 +44,8 @@ function Header() {
         setPerson("")
         toggleNavLink();
         history.push('/home')
-        // console.log(current)
-        // current = undefined;
-        // console.log(current)
-
     }
 
-    // console.log(current)
-    
     return (
         <div>
             <nav className="nav">
