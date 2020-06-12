@@ -27,7 +27,6 @@ function Home() {
                 setPerson(data)
             })
         }
-        
     }, [])
 
     const handleLogin = (user) => {

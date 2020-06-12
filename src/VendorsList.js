@@ -24,6 +24,7 @@ function VendorsList() {
 
 
     useEffect(() => {
+        // console.log(localStorage.getItem("token"))
         const token = localStorage.getItem("token")
         if (token) {
             fetch("http://localhost:3001/vendors", {
@@ -66,10 +67,18 @@ function VendorsList() {
     }
 
     const toggleVendorForm = () => {
-        setShowVendorForm(prev => !prev)
+        if (crrntUser.id) {
+            return setShowVendorForm(prev => !prev)
+        } else {
+            return alert("Please login")
+        };
     }
     const togglePLForm = () => {
-        setShowPLForm(prev => !prev)
+        if (crrntUser.id) {
+            return setShowPLForm(prev => !prev)
+        } else {
+            return alert("Please login")
+        };
     }
     const togglePL = () => {
         setShowPL(prev => !prev)

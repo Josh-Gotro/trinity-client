@@ -10,7 +10,6 @@ function NewPLForm(props) {
     const { register, handleSubmit, errors } = useForm();
 
     const [plid, setPlid] = useState("")
-    const [itmid, setItmid] = useState("")
     const [showCreate, setCreate] = useState(true);
     const [showAddItem, setAddItem] = useState(false);
     const [newItems, setNewItems] = useState([]);
@@ -26,76 +25,83 @@ function NewPLForm(props) {
     }
 
     const onSubmit = (data, r) => {
-        // console.log(data);
+        console.log(data);
+        const token = localStorage.getItem("token")
 
-        fetch(`http://localhost:3001/price_lists`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                user_id: crrntUser.id,
-                vendor_id: data.vendor,
-                date: data.date,
+        if (token) {
+            fetch(`http://localhost:3001/price_lists`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    user_id: crrntUser.id,
+                    vendor_id: data.vendor,
+                    date: data.date,
+                })
             })
-        })
-            .then(resp => resp.json())
-            .then(dta => {
-                localStorage.setItem("token", dta.jwt);
-                // console.log(dta)
-                setPlid(dta.id)
-                toggleCreate()
-                toggleAddItem()
-            })
-        // r.target.reset();
+                .then(resp => resp.json())
+                .then(dta => {
+                    // console.log(dta)
+                    setPlid(dta.id)
+                    toggleCreate()
+                    toggleAddItem()
+                })
+            // r.target.reset();
+        }
     }
 
-    async function onItemSubmit(data, r) {
+    const onItemSubmit = (data, r) => {
+        console.log(data)
         setNewItems(newItems => [...newItems, data]);
+        const token = localStorage.getItem("token")
 
-        const resp = await fetch(`http://localhost:3001/items`, {
+        if (token) {
+        fetch(`http://localhost:3001/items`, {
             method: "POST",
             headers: {
+                "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify({
                 name: data.name
             })
-        });
-        const jsn = await resp.json();
-        localStorage.setItem("token", jsn.jwt);
-        console.log(jsn.id)
-        setItmid(jsn.id);
-        console.log(itmid)
-        await createItemDetail(data);
-
-        // console.log(data)
-        // console.log(plid)
-        // console.log(itmid)
-
-        // r.target.reset();
+        })
+        .then(resp => resp.json())
+        .then(jsn => { 
+            createItemDetail(jsn.id, data);
+            r.target.reset();
+        })
+    }
     }
 
-    async function createItemDetail(data) {
-        // console.log(data)
+    const createItemDetail = (itemId, data) => {
+        console.log(data)
+        const token = localStorage.getItem("token")
 
-        const response = await fetch(`http://localhost:3001/item_details`, {
+        if (token) {
+        fetch(`http://localhost:3001/item_details`, {
             method: "POST",
             headers: {
+                "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify({
                 price_list_id: plid,
-                item_id: itmid,
+                item_id: itemId,
                 pack_size: data.size,
                 price: data.price
             })
-        });
-        const json = await response.json();
-        localStorage.setItem("token", json.jwt);
+        })
+        .then(res => res.json()) 
+        .then(json => {
+            console.log(json)
+        })
+    } 
     }
 
     const toggleCreate = () => {

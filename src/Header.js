@@ -1,16 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { currentUser } from './services/Atom';
-import { useRecoilValue  } from 'recoil';
+import {  useRecoilState } from 'recoil';
 import './App.css';
 
 
 
+
+
 function Header() {
-    let current = useRecoilValue(currentUser);
+    const [person, setPerson] = useRecoilState(currentUser);
+    let history = useHistory();
 
     const toggleNavLink = () => {
-        if (current !== undefined) {
+        if (person.id !== undefined) {
             return <>
             <Link to="/vendors">
                 <li>Vendors</li>
@@ -41,9 +44,11 @@ function Header() {
 
 
     const logoutUser = () => {
-        console.log(current)
-        // localStorage.removeItem("token");
+        console.log(person)
+        localStorage.removeItem("token");
+        setPerson("")
         toggleNavLink();
+        history.push('/home')
         // console.log(current)
         // current = undefined;
         // console.log(current)

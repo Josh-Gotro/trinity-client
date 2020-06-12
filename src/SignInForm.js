@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
+import { useHistory } from 'react-router-dom';
 
 function SignInForm(props) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    let history = useHistory();
 
     const handleUsernameChange = (evt) => {
         setUsername(evt.target.value)
@@ -32,6 +34,7 @@ function SignInForm(props) {
         })
         setUsername("")
         setPassword("")
+        history.push('/vendors')
     }
     const formDivStyle = {
         margin: "auto",
