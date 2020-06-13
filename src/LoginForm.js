@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
-import { useHistory } from 'react-router-dom';
 
 function LoginForm(props){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    let history = useHistory();
 
     const handleUsernameChange = (evt) => {
         setUsername(evt.target.value)
@@ -34,7 +32,6 @@ function LoginForm(props){
         })
         setUsername("")
         setPassword("")
-        history.push('/vendors')
     }
     const formDivStyle = {
         margin: "auto",
@@ -44,7 +41,8 @@ function LoginForm(props){
     return(
         <div>
             <div style={formDivStyle}>
-            <h1>Trinity</h1>            
+            <h1>Trinity</h1>
+            
             <form className="ui form" onSubmit={handleSubmit}>
                 <div className="field">
                     <label>Username</label>

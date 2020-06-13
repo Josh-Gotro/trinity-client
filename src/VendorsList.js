@@ -3,10 +3,7 @@ import Vendor from './Vendor'
 import PriceListCompare from './PriceListCompare'
 import NewVendorForm from './NewVendorForm';
 import NewPLForm from './NewPLForm';
-import { currentVendors } from './services/Atom';
-import { currentPriceLists } from './services/Atom';
-import { currentUser } from './services/Atom';
-import { selectedVendor } from './services/Atom';
+import { currentUser, selectedVendor, currentPriceLists, currentVendors } from './services/Atom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useHistory } from 'react-router-dom';
 
@@ -21,6 +18,8 @@ function VendorsList() {
     const [showPL, setShowPL] = useState(false);
 
     let crrntUser = useRecoilValue(currentUser);
+
+
     let history = useHistory();
 
 
@@ -54,17 +53,20 @@ function VendorsList() {
 
     const myVendors = () => {
         // console.log(vendors)
+        // console.log(curVend)
          if (vendors.length > 0) {
              return vendors.filter(vendor => vendor.user_id === crrntUser.id)
-                 .map(vendor => <Vendor key={vendor.id} vendorClick={handleVendorClick} vendorInfo={vendor} />)
+                 .map(vendor => <Vendor key={vendor.id} vendorPL={curVend} vendorClick={handleVendorClick} vendorInfo={vendor} />)
          }
     }
 
     const handleVendorClick = (e) => {
         // console.log(crrntUser)
         setCurVend(e)
-        console.log(priceLists)
+        console.log(e)
+        // console.log(priceLists)
         togglePL()
+        // console.log(tog)
         // selectedVendor(e)
     }
 
@@ -72,7 +74,7 @@ function VendorsList() {
         if (crrntUser.id) {
             return setShowVendorForm(prev => !prev)
         } else {
-            history.push('/home')
+            history.push('/')
             return alert("Please login or sign up")
         };
     }
@@ -80,7 +82,7 @@ function VendorsList() {
         if (crrntUser.id) {
             return setShowPLForm(prev => !prev)
         } else {
-            history.push('/home')
+            history.push('/')
             return alert("Please login or sign up")
         };
     }

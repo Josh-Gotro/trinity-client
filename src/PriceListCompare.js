@@ -6,18 +6,22 @@ import PriceList from './PriceList';
 function PriceListCompare(props){
     let cpl = useRecoilValue(currentPriceLists)
     let usrId = props.userInfo.id
-    let vndrId = props.currentVendor.vendor_id
+    let vndrId = props.currentVendor.id
 
 // console.log(props)
 // console.log(usrId)
 // console.log(vndrId)
 
 const displayPL = () => {
-    return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId)
-    .map(pl => {
-        // console.log(pl)
-        return <PriceList  key={pl.id} plInfo={pl}/>
-    })
+    // console.log(cpl)
+    // console.log(usrId)
+    // console.log(props.currentVendor)
+    // return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId)
+    // .map(pl => {
+    //     console.log(pl)
+    //     return <PriceList  key={pl.id} plInfo={pl}/>
+    // })
+    return null
 }
 
 

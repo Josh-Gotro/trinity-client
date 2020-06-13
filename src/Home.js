@@ -3,6 +3,7 @@ import SignInForm from './SignInForm';
 import LoginForm from './LoginForm';
 import { currentUser } from './services/Atom';
 import { useRecoilState } from 'recoil';
+import { useHistory } from 'react-router-dom';
 import './App.css';
 
 
@@ -10,6 +11,7 @@ function Home() {
     const [user, setUser] = useState({})
     const [form, setForm] = useState("")
     const [person, setPerson] = useRecoilState(currentUser);
+    let history = useHistory();
     // let crrnt = useRecoilValue(currentUser)
 
     useEffect(() => {
@@ -32,6 +34,9 @@ function Home() {
     const handleLogin = (user) => {
         setUser(user);
         setPerson(user)
+        if (person !== undefined) {
+            return history.push('/vendors')
+        }
     }
 
     const handleFormSwitch = (input) => {

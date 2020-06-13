@@ -10,6 +10,7 @@ function NewPLForm(props) {
     const { register, handleSubmit, errors } = useForm();
 
     const [plid, setPlid] = useState("")
+    const [dummy, setDummy] = useState("")
     const [showCreate, setCreate] = useState(true);
     const [showAddItem, setAddItem] = useState(false);
     const [newItems, setNewItems] = useState([]);
@@ -49,8 +50,8 @@ function NewPLForm(props) {
                     toggleCreate()
                     toggleAddItem()
                 })
-            // r.target.reset();
         }
+
     }
 
     const onItemSubmit = (data, r) => {
@@ -99,7 +100,7 @@ function NewPLForm(props) {
         })
         .then(res => res.json()) 
         .then(json => {
-            console.log(json)
+            setDummy(json)
         })
     } 
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { currentUser } from './services/Atom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import './App.css';
 
 function Header() {
@@ -9,29 +9,31 @@ function Header() {
     let history = useHistory();
 
     const toggleNavLink = () => {
-        if (person.id !== undefined) {
+        if (person !== undefined) {
             return <>
                 <Link to="/vendors">
                     <li>Vendors</li>
                 </Link>
 
-                <Link to="home">
+                <Link to="/">
                     <li>Items</li>
                 </Link>
 
-                <Link to="home">
+                <Link to="/">
                     <li >Price Lists</li>
                 </Link>
 
-                <Link to="home">
+                <Link to="/">
                     <h1 >Trinity</h1>
                 </Link>
+
+                {/* <h4>{greetUser()}</h4> */}
 
                 <li onClick={logoutUser}>Logout</li>
             </>
         } else {
             return <>
-                <Link to="home">
+                <Link to="/">
                     <h1 >Trinity</h1>
                 </Link>
             </>
@@ -43,7 +45,7 @@ function Header() {
         localStorage.removeItem("token");
         setPerson("")
         toggleNavLink();
-        history.push('/home')
+        history.push('/')
     }
 
     return (
