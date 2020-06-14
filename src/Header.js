@@ -17,11 +17,11 @@ function Header() {
                     <li>Vendors</li>
                 </Link>
 
-                <Link to="/">
+                <Link to="/items">
                     <li>Items</li>
                 </Link>
 
-                <Link to="/">
+                <Link to="/pricelists">
                     <li >Price Lists</li>
                 </Link>
 
