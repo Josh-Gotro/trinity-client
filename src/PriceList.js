@@ -18,9 +18,9 @@ function PriceList({plInfo}){
 
     return (
         <div>
-            
+            {date}
             {plItem()}
-            {/* <Item /> */}
+
            
         </div>
     );
