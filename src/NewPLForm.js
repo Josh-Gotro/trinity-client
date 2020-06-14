@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ListItems from './ListItems'
 import { currentVendors } from './services/Atom';
 import { currentUser } from './services/Atom';
@@ -10,6 +10,7 @@ function NewPLForm(props) {
     const { register, handleSubmit, errors } = useForm();
 
     const [plid, setPlid] = useState("")
+    const [itemDetails, setItemDetails] = useState("")
     const [showCreate, setCreate] = useState(true);
     const [showAddItem, setAddItem] = useState(false);
     const [newItems, setNewItems] = useState([]);
@@ -17,12 +18,7 @@ function NewPLForm(props) {
     let vendors = useRecoilValue(currentVendors)
     let crrntUser = useRecoilValue(currentUser)
 
-    // useEffect(() => {
-
-    // }, [])
-
     const vendorOptions = () => {
-        // console.log(vendors)
         if (vendors.length > 0) {
             return vendors.filter(vendor => vendor.user_id === crrntUser.id)
                 .map(vendor => <option key={vendor.id} value={vendor.id} > {vendor.name}</option>)
@@ -30,35 +26,37 @@ function NewPLForm(props) {
     }
 
     const onSubmit = (data, r) => {
-        // console.log(data);
+        console.log(data);
+        const token = localStorage.getItem("token")
 
-        fetch(`http://localhost:3001/price_lists`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                user_id: crrntUser.id,
-                vendor_id: data.vendor,
-                date: data.date,
+        if (token) {
+            fetch(`http://localhost:3001/price_lists`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    user_id: crrntUser.id,
+                    vendor_id: data.vendor,
+                    date: data.date,
+                })
             })
-        })
-            .then(resp => resp.json())
-            .then(dta => {
-                localStorage.setItem("token", dta.jwt);
-                setPlid(dta.id)
-                console.log(plid)
-                toggleCreate()
-                toggleAddItem()
-            })
-        // r.target.reset();
+                .then(resp => resp.json())
+                .then(dta => {
+                    // console.log(dta)
+                    setPlid(dta.id)
+                    toggleCreate()
+                    toggleAddItem()
+                })
+        }
+
     }
 
     const onItemSubmit = (data, r) => {
-        // console.log(data)
+        console.log(data)
         setNewItems(newItems => [...newItems, data]);
-        console.log(newItems)
         const token = localStorage.getItem("token")
 
         if (token) {
@@ -76,14 +74,13 @@ function NewPLForm(props) {
                 .then(resp => resp.json())
                 .then(jsn => {
                     createItemDetail(jsn.id, data);
-
                     r.target.reset();
                 })
         }
     }
 
     const createItemDetail = (itemId, data) => {
-        // console.log(data)
+        console.log(data)
         const token = localStorage.getItem("token")
 
         if (token) {
@@ -103,7 +100,7 @@ function NewPLForm(props) {
             })
                 .then(res => res.json())
                 .then(json => {
-                    console.log(json)
+                    setItemDetails(json)
                 })
         }
     }
