@@ -49,6 +49,13 @@ function PriceListCompare(props) {
 
     const compareInvoices = () => {
         console.log(newestPL, comparePL)
+        return newestPL.item_details.map(itm => {
+            return comparePL.item_details.map(i => {
+                if (itm.item_name === i.item_name) {
+                    return <><span>{itm.item_name}</span><span>{`$${itm.price - i.price}`}</span><br></br></>
+                }
+            })
+        })
     }
 
     // choose price list to compare to most recent. default to second most recent.
