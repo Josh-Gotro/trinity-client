@@ -4,12 +4,8 @@ import Header from './Header'
 import SignInForm from './SignInForm';
 import LoginForm from './LoginForm';
 import VendorsList from './VendorsList';
-// import Vendor from './Vendor';
 import Home from './Home';
-
-import { RecoilRoot, 
-  // atom, selector, useRecoilState, useRecoilValue, initializeState
-} from 'recoil';
+import { RecoilRoot } from 'recoil';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
 
 

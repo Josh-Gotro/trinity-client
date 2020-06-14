@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { currentUser } from './services/Atom';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import './App.css';
 
 function Header() {
-    const [person, setPerson] = useRecoilState(currentUser);
+    let person = useRecoilValue(currentUser)
     let history = useHistory();
 
     const toggleNavLink = () => {
-        if (person !== undefined) {
+        
+        if (person !== "") {
+            // logoutUser()
             return <>
                 <Link to="/vendors">
                     <li>Vendors</li>
@@ -41,9 +43,9 @@ function Header() {
     }
 
     const logoutUser = () => {
-        console.log(person)
+        // console.log(person)
         localStorage.removeItem("token");
-        setPerson("")
+        // setPerson("")
         toggleNavLink();
         history.push('/')
     }

@@ -16,18 +16,19 @@ const displayPL = () => {
     // console.log(cpl)
     // console.log(usrId)
     // console.log(props.currentVendor)
-    // return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId)
-    // .map(pl => {
-    //     console.log(pl)
-    //     return <PriceList  key={pl.id} plInfo={pl}/>
-    // })
-    return null
+    if (cpl !== undefined) { 
+        return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId)
+        .map(pl => {
+            // console.log(pl)
+            return <PriceList  key={pl.id} plInfo={pl}/>
+        })
+    }
+    // return null
 }
 
 
     return (
         <div>
-            pricelist
             {displayPL()}
         </div>
     );

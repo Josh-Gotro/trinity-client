@@ -18,25 +18,25 @@ function Home() {
         const token = localStorage.getItem("token")
 
         if (token) {
-            fetch(`http://localhost:3001/auto_login`,  {
+            fetch(`http://localhost:3001/auto_login`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
-            .then(resp => resp.json())
-            .then(data => {
-                setUser(data);
-                setPerson(data)
-            })
+                .then(resp => resp.json())
+                .then(data => {
+                    setUser(data);
+                    setPerson(data)
+                })
         }
-    }, [setPerson])
+    }, [setUser, setPerson])
 
     const handleLogin = (user) => {
         setUser(user);
         setPerson(user)
         if (person !== undefined) {
             return history.push('/vendors')
-        }
+        };
     }
 
     const handleFormSwitch = (input) => {
@@ -61,7 +61,7 @@ function Home() {
                 return <LoginForm handleLogin={handleLogin} />;
             case "signUp":
                 return <SignInForm handleLogin={handleLogin} />;
-            default:    
+            default:
                 return <LoginForm handleLogin={handleLogin} />;
         }
     }

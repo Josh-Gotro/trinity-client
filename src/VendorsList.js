@@ -54,16 +54,16 @@ function VendorsList() {
     const myVendors = () => {
         // console.log(vendors)
         // console.log(curVend)
-         if (vendors.length > 0) {
+        if (vendors.length > 0 && crrntUser !== undefined) {
              return vendors.filter(vendor => vendor.user_id === crrntUser.id)
                  .map(vendor => <Vendor key={vendor.id} vendorPL={curVend} vendorClick={handleVendorClick} vendorInfo={vendor} />)
-         }
+         } 
     }
 
     const handleVendorClick = (e) => {
         // console.log(crrntUser)
         setCurVend(e)
-        console.log(e)
+        // console.log(e)
         // console.log(priceLists)
         togglePL()
         // console.log(tog)
@@ -71,15 +71,16 @@ function VendorsList() {
     }
 
     const toggleVendorForm = () => {
-        if (crrntUser.id) {
+// -----------> added the !== statement in order to catch blank logins 
+        if (crrntUser !== undefined && crrntUser.id) {
             return setShowVendorForm(prev => !prev)
         } else {
-            history.push('/')
-            return alert("Please login or sign up")
+            alert("Please login or sign up")
+            return history.push('/')
         };
     }
     const togglePLForm = () => {
-        if (crrntUser.id) {
+        if (crrntUser !== undefined && crrntUser.id) {
             return setShowPLForm(prev => !prev)
         } else {
             history.push('/')
