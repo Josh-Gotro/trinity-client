@@ -80,6 +80,7 @@ function VendorsList() {
         };
     }
     const togglePLForm = () => {
+// -----------> added the !== statement in order to catch blank logins 
         if (crrntUser !== undefined && crrntUser.id) {
             return setShowPLForm(prev => !prev)
         } else {
@@ -94,7 +95,6 @@ function VendorsList() {
     return (
         <div>
             <div>
-                {/* {console.log(crrntUser)} */}
                 {myVendors()}
             </div>
             <div>
