@@ -92,6 +92,7 @@ function NewPLForm(props) {
                     "Accept": "application/json"
                 },
                 body: JSON.stringify({
+                    item_name: data.name,
                     price_list_id: plid,
                     item_id: itemId,
                     pack_size: data.size,

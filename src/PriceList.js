@@ -7,6 +7,7 @@ function PriceList({plInfo}){
 
     const plItem = () => {
         // console.log("hi there")
+        if (items !== undefined) { 
         return items.map(item =>{
             return item_details.filter(itemD => item.id === itemD.id)
             .map(i => {
@@ -14,6 +15,7 @@ function PriceList({plInfo}){
                 return <Item key={i.id} date={date} itemDetails={i} itemName={item.name}/>
             })
         })
+    }
     }
 
     return (

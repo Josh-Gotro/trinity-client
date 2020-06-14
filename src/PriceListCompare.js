@@ -5,9 +5,6 @@ import PriceList from './PriceList';
 
 function PriceListCompare(props) {
     let cpl = useRecoilValue(currentPriceLists)
-    const [vendorUserPricelists, setVendorUserPricelists] = useState([]);
-    const [mostRecent, setMostRecent] = useState("");
-    const [compare, setCompare] = useState("");
     let usrId = props.userInfo.id
     let vndrId = props.currentVendor.id
     let date = "0000-00-00"
@@ -15,13 +12,7 @@ function PriceListCompare(props) {
     let compareDate = "0000-00-00"
     let comparePL = {}
 
-
-
-
-    // console.log(props)
-    // console.log(usrId)
-    // console.log(vndrId)
-
+    // template filter  
     const displayPL = () => {
         // console.log(cpl)
         // console.log(usrId)
@@ -35,26 +26,7 @@ function PriceListCompare(props) {
         }
         // return null
     }
-
-    // choose price list to compare to most recent. default to second most recent.
-    const displaySelected = () => {
-        choosePL();
-        return <PriceList key={comparePL.id} plInfo={comparePL} />
-    }
-
-    const choosePL = () => {
-        if (cpl !== undefined) {
-            return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId)
-                .map(pl => {
-                    if (pl.date > compareDate) {
-                        compareDate = pl.date
-                        comparePL = pl
-                    }
-                })
-        }
-    }
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+    // ^
 
     // find most recent price list and display it
     const displayMostRecent = () => {
@@ -73,16 +45,40 @@ function PriceListCompare(props) {
             })
         }
     }
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // ^
+
+    const compareInvoices = () => {
+        console.log(newestPL, comparePL)
+    }
+
+    // choose price list to compare to most recent. default to second most recent.
+    const displaySelected = () => {
+        choosePL();
+        return <PriceList key={comparePL.id} plInfo={comparePL} />
+    }
+
+    const choosePL = () => {
+        // build in a trigger that defaults to second most recent price list if another price list is not selected. 
+        if (cpl !== undefined) {
+            return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId)
+                .map(pl => {
+                    if (pl.date > compareDate) {
+                        compareDate = pl.date
+                        comparePL = pl
+                    }
+                })
+        }
+    }
+    // ^
 
     return (
         <div>
             <br></br><br></br>
             {displayMostRecent()}
             <br></br><br></br>
-            {/* {compareInvoices()} */}
-            <br></br><br></br>
             {displaySelected()}
+            <br></br><br></br>
+            {compareInvoices()}
         </div>
     );
 }
