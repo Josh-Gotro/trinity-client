@@ -50,7 +50,7 @@ function VendorsList() {
     const myVendors = () => {
         if (vendors.length > 0 && crrntUser !== undefined) {
              return vendors.filter(vendor => vendor.user_id === crrntUser.id)
-                 .map(vendor => <Vendor key={vendor.id} vendorPL={curVend} vendorClick={handleVendorClick} vendorInfo={vendor} />)
+                 .map(vendor => <><div className="Side"><Vendor key={vendor.id} vendorPL={curVend} vendorClick={handleVendorClick} vendorInfo={vendor} /></div></>)
          } 
     }
 
@@ -84,21 +84,20 @@ function VendorsList() {
 
     return (
         <div>
-            <div>
+            <div className="card">
                 {myVendors()}
+
+                {<button className="NewForm" onClick={toggleVendorForm}>Add Vendor</button>}<br></br>
+                {<button className="NewForm" onClick={togglePLForm}>New Price List</button>}
             </div>
             <div>
-                {<button onClick={toggleVendorForm}>Add Vendor</button>}<br></br>
-                {<button onClick={togglePLForm}>New Price List</button>}
+                {showVendorForm ? <NewVendorForm key={Math.random()} toggle={toggleVendorForm} userInfo={crrntUser} /> : null}
             </div>
             <div>
-                {showVendorForm ? <NewVendorForm toggle={toggleVendorForm} userInfo={crrntUser} /> : null}
+                {showPLForm ? <NewPLForm key={Math.random()} toggle={togglePLForm} userInfo={crrntUser} /> : null}
             </div>
-            <div>
-                {showPLForm ? <NewPLForm toggle={togglePLForm} userInfo={crrntUser} /> : null}
-            </div>
-            <div>
-                {showPL ? <PriceListCompare  currentVendor={curVend} userInfo={crrntUser} /> : null}
+            <div className="display_card ">
+                {showPL ? <PriceListCompare  key={Math.random()} currentVendor={curVend} userInfo={crrntUser} /> : null}
             </div>
         </div>
     );

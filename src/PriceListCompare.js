@@ -37,7 +37,16 @@ function PriceListCompare(props) {
             return newestPL.item_details.map(itm => {
                 return comparePL.item_details.map(i => {
                     if (itm.item_name === i.item_name) {
-                        return <><span>{itm.item_name}</span><span>{`$${itm.price - i.price}`}</span><br></br></>
+                        let priceDif = itm.price - i.price
+                        console.log(priceDif)
+                        if (priceDif < 0 ){ 
+                            return <><span key={Math.random()} >{itm.item_name}</span><span key={Math.random()} >DOWN</span><span key={Math.random()} >{`$${itm.price - i.price}`}</span><span key={Math.random()} >{`per ${itm.pack_size}`}</span><br></br></>
+                        } else if (priceDif > 0){
+                            return <><span key={Math.random()} >{itm.item_name}</span><span key={Math.random()} >UP</span><span key={Math.random()} >{`$${itm.price - i.price}`}</span><span key={Math.random()} >{`per ${itm.pack_size}`}</span><br></br></>
+                        } else {
+                            return <><span key={Math.random()} >{itm.item_name}</span><span key={Math.random()} >NO CHANGE</span><span key={Math.random()} >{`$${itm.price - i.price}`}</span ><span key={Math.random()} >{`per ${itm.pack_size}`}</span><br></br></>
+
+                        }
                     }
                 })
             })
@@ -68,11 +77,11 @@ function PriceListCompare(props) {
     return (
         <div>
             <br></br><br></br>
-            {displayMostRecent()}
+            <div>{displayMostRecent()}</div>
             <br></br><br></br>
-            {displaySelected()}
+            <div>{displaySelected()}</div>
             <br></br><br></br>
-            {compareInvoices()}
+            <div> {compareInvoices()}</div>
         </div>
     );
 }

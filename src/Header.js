@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { currentUser } from './services/Atom';
 import { useRecoilState } from 'recoil';
-import './App.css';
+import './customCSS/Nav.css';
 
 function Header() {
     const [person, setPerson] = useRecoilState(currentUser);
@@ -15,29 +15,29 @@ function Header() {
             // logoutUser()
             return <>
                 <Link to="/vendors">
-                    <li>Vendors</li>
+                    <div>Vendors</div>
                 </Link>
 
                 <Link to="/items">
-                    <li>Items</li>
+                    <div>Items</div>
                 </Link>
 
                 <Link to="/pricelists">
-                    <li >Price Lists</li>
+                    <div>Price Lists</div>
                 </Link>
 
                 <Link to="/">
-                    <h1 >Trinity</h1>
+                    <h1>Mirpoix</h1>
                 </Link>
 
                 {greetUser()}
 
-                <li onClick={logoutUser}>Logout</li>
+                <div className="Logout" onClick={logoutUser}>Logout</div>
             </>
         } else {
             return <>
-                <Link to="/">
-                    <h1 >Trinity</h1>
+                <Link className="Title" to="/">
+                    <h1 className="Title">Mirpoix</h1>
                 </Link>
             </>
         }
@@ -58,16 +58,13 @@ function Header() {
     }
 
     return (
-        <div>
-            <nav className="nav">
-                <ul className="nav-links">
-                    {
-                        toggleNavLink()
-                    }
-                </ul>
-            </nav>
+        <>
+            <nav className="nav">  
+                {toggleNavLink()}
+            </nav>        
+        </>
 
-        </div>
+
     )
 }
 

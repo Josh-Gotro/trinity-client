@@ -12,6 +12,7 @@ function Home() {
     const [form, setForm] = useState("")
     const [person, setPerson] = useRecoilState(currentUser);
     let history = useHistory();
+    const [loginToggle, setLoginToggle] = useState(false);
     // let crrnt = useRecoilValue(currentUser)
 
     useEffect(() => {
@@ -40,6 +41,7 @@ function Home() {
     }
 
     const handleFormSwitch = (input) => {
+        setLoginToggle(prev => !prev)
         setForm(input)
     }
 
@@ -72,15 +74,16 @@ function Home() {
         console.log(user)
     }
     return (
-        <div>
-            <button onClick={handleAuthClick} className="hiddefgjhdfg">Access Authorized Route</button><br></br>
+        <>
+            <div className="HeroPage">
+                {/* <button onClick={handleAuthClick} className="hiddefgjhdfg">Access Authorized Route</button><br></br> */}
 
-            {
-                renderForm()
-            }
-            <button className="ui button" onClick={() => handleFormSwitch("login")}>Log In</button>
-            <button className="ui button" onClick={() => handleFormSwitch("signUp")}>Sign Up</button>
-        </div>
+                {renderForm()}
+        
+                {loginToggle ? <button className="LoginButtonSwap" onClick={() => handleFormSwitch("login")}>or, Log In</button> : null }
+                {loginToggle ? null : <button className="LoginButtonSwap" onClick={() => handleFormSwitch("signUp")}>or, Sign Up</button>}
+            </div>
+        </>
     );
 };
 

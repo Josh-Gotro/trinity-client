@@ -5,45 +5,192 @@
 
 .App {
   text-align: center;
+
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  background: url('./images/white_tile.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
 }
 
-.App-header {
-  background-color: whitesmoke;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.HeroPage{
+  display: inline-grid;
+  grid-template-columns: 
+    [col-1-start]15% 
+    [col-1-end col-2-start]15% 
+    [col-2-end col-3-start]auto
+    [col-3-end col-4-start]20% 
+    [col-4-end col-5-start]20% 
+    [col-5-end col-6-start]10% 
+    [col-6-end]; 
+
+  grid-template-rows: 
+    [row-1-start]auto  
+    [row-1-end row-2-start]32% 
+    [row-2-end row-3-start]7% 
+    [row-3-end row-4-start]7%
+    [row-4-end row-5-start]20% 
+    [row-5-end row-6-start]15%
+    [row-6-end];
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+  background: url('./images/pass.jpg') no-repeat top center fixed;
+  background-size: contain;
+  min-height: 80vh;
+  height: 100%;
+  width: 100%;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.LoginGrid {
+  grid-column-start: col-4-end;
+  grid-row-start: row-1-end;
+    align-items: left;
+    text-align: left;
+    padding-top: 5vmin;
+  /* padding-right: 20px; */
+  text-decoration: none;
+  display: inline-block;
+}
+
+h1 {
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  text-align: center;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 5px 5px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 3px solid rgb(100, 100, 224);
+    border-radius: 4px;
+    transition-duration: 0.4s;
+  background-color: whitesmoke;
+  opacity: .95;
+  outline: none;
+}
+
+input[type=password] {
+  width: 100%;
+  padding: 5px 5px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 3px solid rgb(100, 100, 224);
+    border-radius: 4px;
+    transition-duration: 0.4s;
+  background-color: whitesmoke;
+  opacity: .95;
+  outline: none;
+}
+
+
+.LoginButton1 {
+  grid-column-start: col-5-start;
+  grid-row-start: row-2-end;
+  background-color: whitesmoke;
+  color: rgb(100, 100, 224);
+  /* padding: 12px 45px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* margin: 10%; */
+  font-size: 14px;
+  min-height: 30px;
+  min-width: 100%;
+  align-self: top;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  width: 75%;
+   outline: none;
+}
+
+.LoginButtonSwap {
+  grid-column-start: col-5-start;
+  grid-row-start: row-3-end;
+  background-color: transparent;
+  color: rgb(100, 100, 224);
+  /* padding: 12px 45px; */
+   min-width: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* margin: 10%; */
+  font-size: 17px;
+  align-self: top;
+  text-align: left;
+  /* border-radius: 4px; */
+  transition-duration: 0.4s;
+  border: none;
+   outline: none;
+   margin-bottom: 20%;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: rgb(100, 100, 224);
+  color: whitesmoke;
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  /* opacity: 0.9; */
+  width: max-content;
+  margin: 20px;
+  
+}
+
+
+.NewForm {
+  background-color: whitesmoke;
+  color: rgb(100, 100, 224);;
+  padding: 12px 45px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  align-self: center;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  width: 100%;
+}
+
+.NewForm:hover {
+  background-color: rgb(100, 100, 224); /* Green */
   color: white;
+  /* opacity: 1; */
 }
 
-.App-link {
-  color: #09d3ac;
+.Side {
+  text-align: center;
+  min-width: 20vh;
+  min-height: 100%;
+  border-radius: 10px;
+  margin: 20px;
+  border-color: black;
+  outline-color: black;
+  outline-width: 2px;
+  outline-style: outset;
+  width: 230px;
+	float: left;
+	margin-right: 10px;
+
 }
 
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 10vh;
-  background: whitesmoke;
-  color: black;
+.display_card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: rgb(100, 100, 224);
+  color: whitesmoke;
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  /* opacity: 0.9; */
+  width: max-content;
+  margin: 20px;
 
-}
-
-.nav-links {
-  background-color: whitesmoke;
-  color: black;
-  width: 40%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  list-style: none;
 }
 
 .hidden {
@@ -53,4 +200,25 @@ nav {
 .unhidden {
   display: inline;
 }
+
+/* .App-logo {
+  height: 40vmin;
+} */
+
+/* .App-header {
+  background-color: whitesmoke;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+} */
+
+/* .App-link {
+  color: #09d3ac;
+} */
+
+
 

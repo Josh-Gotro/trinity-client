@@ -16,7 +16,7 @@ const PriceLists = () => {
             return cpl.filter(pl => pl.user_id === usr.id)
                 .map(pl => {
                     // console.log(pl)
-                    return <PriceList plInfo={pl} />
+                    return <PriceList key={pl.id} plInfo={pl} />
                 })
         }
         return null
