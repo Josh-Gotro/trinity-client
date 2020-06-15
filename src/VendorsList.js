@@ -19,13 +19,9 @@ function VendorsList() {
 
     let crrntUser = useRecoilValue(currentUser);
 
-
     let history = useHistory();
 
-
-
     useEffect(() => {
-        // console.log(localStorage.getItem("token"))
         const token = localStorage.getItem("token")
         if (token) {
             fetch("http://localhost:3001/vendors", {
@@ -52,8 +48,6 @@ function VendorsList() {
     }, [setPriceLists])
 
     const myVendors = () => {
-        // console.log(vendors)
-        // console.log(curVend)
         if (vendors.length > 0 && crrntUser !== undefined) {
              return vendors.filter(vendor => vendor.user_id === crrntUser.id)
                  .map(vendor => <Vendor key={vendor.id} vendorPL={curVend} vendorClick={handleVendorClick} vendorInfo={vendor} />)
@@ -61,13 +55,8 @@ function VendorsList() {
     }
 
     const handleVendorClick = (e) => {
-        // console.log(crrntUser)
         setCurVend(e)
-        // console.log(e)
-        // console.log(priceLists)
         togglePL()
-        // console.log(tog)
-        // selectedVendor(e)
     }
 
     const toggleVendorForm = () => {
@@ -90,6 +79,7 @@ function VendorsList() {
     }
     const togglePL = () => {
         setShowPL(prev => !prev)
+        console.log(priceLists)
     }
 
     return (

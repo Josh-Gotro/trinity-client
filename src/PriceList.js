@@ -12,6 +12,7 @@ function PriceList({plInfo}){
             return item_details.filter(itemD => item.id === itemD.id)
             .map(i => {
                 // console.log(i)
+                // console.log(item)
                 return <Item key={i.id} date={date} itemDetails={i} itemName={item.name}/>
             })
         })

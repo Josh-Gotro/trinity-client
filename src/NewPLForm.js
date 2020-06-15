@@ -26,7 +26,7 @@ function NewPLForm(props) {
     }
 
     const onSubmit = (data, r) => {
-        console.log(data);
+        // console.log(data);
         const token = localStorage.getItem("token")
 
         if (token) {
@@ -55,7 +55,7 @@ function NewPLForm(props) {
     }
 
     const onItemSubmit = (data, r) => {
-        console.log(data)
+        // console.log(data)
         setNewItems(newItems => [...newItems, data]);
         const token = localStorage.getItem("token")
 
@@ -80,7 +80,7 @@ function NewPLForm(props) {
     }
 
     const createItemDetail = (itemId, data) => {
-        console.log(data)
+        // console.log(data)
         const token = localStorage.getItem("token")
 
         if (token) {
@@ -102,6 +102,7 @@ function NewPLForm(props) {
                 .then(res => res.json())
                 .then(json => {
                     setItemDetails(json)
+                    console.log(itemDetails)
                 })
         }
     }

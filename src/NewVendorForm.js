@@ -14,7 +14,7 @@ function NewVendorForm(props) {
 
     const onSubmit = (data, r) => {
         alert(`Submitting New Vendor ${data.name}`)
-        console.log(data)
+        console.log(vendors)
         const token = localStorage.getItem("token")
 
         if (token) {
