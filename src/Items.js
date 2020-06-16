@@ -14,7 +14,7 @@ const Items = () => {
             return cpl.filter(pl => pl.user_id === usr.id)
                 .map(plst => { 
                     return plst.item_details.map(pl => { 
-                        return <>{plst.vendor.name} <Item key={Math.random()} itemName={pl.item_name} itemDetails={pl} /> </>
+                        return <div className="display_card_item">{plst.vendor.name} <Item key={Math.random()} itemName={pl.item_name} itemDetails={pl} /> </div>
                     })
 
                 })
@@ -23,7 +23,7 @@ const Items = () => {
     }
 
     return (
-        <div>
+        <div className="Items_container">
 
             {displayPL()}
 

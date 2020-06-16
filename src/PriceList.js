@@ -21,7 +21,7 @@ function PriceList({plInfo}){
 
     return (
         <>
-            {date}
+            <div className="colD">{date}</div>
             {plItem()}
 
            

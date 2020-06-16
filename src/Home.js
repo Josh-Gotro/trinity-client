@@ -27,7 +27,8 @@ function Home() {
                 .then(resp => resp.json())
                 .then(data => {
                     setUser(data);
-                    setPerson(data)
+                    setPerson(data);
+                    console.log(user)
                 })
         }
     }, [setUser, setPerson])
@@ -45,17 +46,17 @@ function Home() {
         setForm(input)
     }
 
-    const handleAuthClick = () => {
-        whoisuser();
-        const token = localStorage.getItem("token")
-        fetch(`http://localhost:3001/user_is_authed`, {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then(resp => resp.json())
-            .then(data => console.log(data))
-    }
+    // const handleAuthClick = () => {
+    //     whoisuser();
+    //     const token = localStorage.getItem("token")
+    //     fetch(`http://localhost:3001/user_is_authed`, {
+    //         headers: {
+    //             "Authorization": `Bearer ${token}`
+    //         }
+    //     })
+    //         .then(resp => resp.json())
+    //         .then(data => console.log(data))
+    // }
 
     const renderForm = () => {
         switch (form) {
@@ -68,11 +69,11 @@ function Home() {
         }
     }
 
-    const whoisuser = () => {
-        console.log(person)
-        // console.log(crrnt)
-        console.log(user)
-    }
+    // const whoisuser = () => {
+    //     console.log(person)
+    //     // console.log(crrnt)
+    //     console.log(user)
+    // }
     return (
         <>
             <div className="HeroPage">
@@ -82,8 +83,8 @@ function Home() {
 
                 {renderForm()}
         
-                {loginToggle ? <button className="LoginButtonSwap" onClick={() => handleFormSwitch("login")}>|  log in</button> : null }
-                {loginToggle ? null : <button className="LoginButtonSwap" onClick={() => handleFormSwitch("signUp")}>|  sign up</button>}
+                {loginToggle ? <button className="LoginButtonSwap" onClick={() => handleFormSwitch("login")}> log in</button> : null }
+                {loginToggle ? null : <button className="LoginButtonSwap" onClick={() => handleFormSwitch("signUp")}> sign up</button>}
             
             </div>
         </>

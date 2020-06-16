@@ -21,11 +21,10 @@ function PriceListCompare(props) {
 
     const findMostRecent = () => {
         if (cpl !== undefined) {
-            return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId)
-            .map(pl => {
+            return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId).map(pl => {
                 if (pl.date > date) {
-                        date = pl.date
-                        newestPL = pl
+                    date = pl.date
+                    newestPL = pl
                 }
             })
         }
@@ -40,33 +39,33 @@ function PriceListCompare(props) {
                     if (itm.item_name === i.item_name) {
                         let priceDif = itm.price - i.price
                         priceDif = priceDif.toFixed(2)
-                        if (priceDif < 0 ){ 
-                            return<>
-                                <span id="c1" key={Math.random()} >{itm.item_name}</span>
-                                <span id="c2" key={Math.random()} >DOWN</span>
-                                <span id="c3" key={Math.random()} >{`$${priceDif}`}</span>
-                                <span id="c4" key={Math.random()} >{`per ${itm.pack_size}`}</span>
-                            <br></br></>
-                        } else if (priceDif > 0){
-                            return<>
-                                <span id="c1" key={Math.random()} >{itm.item_name}</span>
-                                <span id="c2" key={Math.random()} >UP</span>
-                                <span id="c3" key={Math.random()} >{`$${priceDif}`}</span>
-                                <span id="c4" key={Math.random()} >{`per ${itm.pack_size}`}</span>
-                            <br></br></>
+                        if (priceDif < 0) {
+                            return <>
+                                <div id="ca" key={Math.random()} >{itm.item_name}</div>
+                                <div id="cs"  key={Math.random()} >DOWN</div>
+                                <div id="cd" key={Math.random()} >{`$${priceDif}`}</div>
+                                <div id="cf"  key={Math.random()} >{`per ${itm.pack_size}`}</div>
+                                </>
+                        } else if (priceDif > 0) {
+                            return <>
+                                <div id="ca"  key={Math.random()} >{itm.item_name}</div>
+                                <div id="cs"  key={Math.random()} >UP</div>
+                                <div id="cd"  key={Math.random()} >{`$${priceDif}`}</div>
+                                <div id="cf"  key={Math.random()} >{`per ${itm.pack_size}`}</div>
+                                </>
                         } else {
-                            return<>
-                                <span id="c1" key={Math.random()} >{itm.item_name}</span>
-                                <span id="c2" key={Math.random()} >NO CHANGE</span>
-                                <span id="c3" key={Math.random()} >{`$${priceDif}`}</span>
-                                <span id="c4" key={Math.random()} >{`per ${itm.pack_size}`}</span>
-                            <br></br></>
+                            return <>
+                                <div id="ca"  key={Math.random()} >{itm.item_name}</div>
+                                <div id="cs"  key={Math.random()} >NO CHANGE</div>
+                                <div id="cd"  key={Math.random()} >{`$${priceDif}`}</div>
+                                <div id="cf"  key={Math.random()} >{`per ${itm.pack_size}`}</div>
+                                </>
 
                         }
                     }
                 })
             })
-        } 
+        }
     }
 
     // choose price list to compare to most recent. default to second most recent.
@@ -90,14 +89,17 @@ function PriceListCompare(props) {
     // ^
 
     return (
+        <>
         <div className="GridPLC" >
-            <br></br><br></br>
-            <>{displayMostRecent()}</>
-            <br></br><br></br>
-            <>{displaySelected()}</>
-            <br></br><br></br>
-            <> {compareInvoices()}</>
-        </div>
+         <span className="plc_title">Compare</span>
+            <div className="col" >{displayMostRecent()}</div>
+      
+            <div className="col" >{displaySelected()}</div>
+        </div > 
+        <div className="GridPLCBottom" >
+            <div className="row" >{compareInvoices()} </div>
+        </div >
+        </>
     );
 }
 

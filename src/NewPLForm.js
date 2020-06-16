@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ListItems from './ListItems'
-import { currentVendors } from './services/Atom';
-import { currentUser } from './services/Atom';
+import { currentVendors, currentUser } from './services/Atom';
 import { useRecoilValue } from 'recoil';
 import { useForm } from "react-hook-form";
 
@@ -9,11 +8,14 @@ import { useForm } from "react-hook-form";
 function NewPLForm(props) {
     const { register, handleSubmit, errors } = useForm();
 
+    // const [currentPL, setPl] = useState({})
     const [plid, setPlid] = useState("")
     const [itemDetails, setItemDetails] = useState("")
     const [showCreate, setCreate] = useState(true);
     const [showAddItem, setAddItem] = useState(false);
     const [newItems, setNewItems] = useState([]);
+ 
+
 
     let vendors = useRecoilValue(currentVendors)
     let crrntUser = useRecoilValue(currentUser)
@@ -45,10 +47,11 @@ function NewPLForm(props) {
             })
                 .then(resp => resp.json())
                 .then(dta => {
-                    // console.log(dta)
+                    console.log(dta)
                     setPlid(dta.id)
                     toggleCreate()
                     toggleAddItem()
+
                 })
         }
 
@@ -118,6 +121,7 @@ function NewPLForm(props) {
     const finishSequence = () => {
         alert(`Price List Created`)
         props.toggle()
+        props.fetchV()
     }
 
     const listItems = () => {
@@ -156,6 +160,7 @@ function NewPLForm(props) {
                 </label> : null}
                 {showAddItem ? <input type="submit" value="+ Item" /> : null}
             </form>
+
             {showAddItem ? <button type="button" onClick={finishSequence} >finished</button> : null}
 
         </div>

@@ -23,6 +23,10 @@ function VendorsList() {
     let history = useHistory();
 
     useEffect(() => {
+        fetchVendors()
+    }, [setVendors])
+
+    const fetchVendors = () => {
         const token = localStorage.getItem("token")
         if (token) {
             fetch("http://localhost:3001/vendors", {
@@ -33,9 +37,14 @@ function VendorsList() {
                 .then(r => r.json())
                 .then(vend => setVendors(vend))
         }
-    }, [setVendors])
+    }
+
 
     useEffect(() => {
+        fetchPL()
+    }, [setPriceLists])
+
+    const fetchPL = () => {
         const token = localStorage.getItem("token")
         if (token) {
             fetch("http://localhost:3001/price_lists", {
@@ -46,7 +55,7 @@ function VendorsList() {
                 .then(r => r.json())
                 .then(plists => setPriceLists(plists))
         }
-    }, [setPriceLists])
+    }
 
     const myVendors = () => {
         if (vendors.length > 0 && crrntUser !== undefined) {
@@ -101,7 +110,7 @@ function VendorsList() {
                 {showVendorForm ? <NewVendorForm key={Math.random()} toggle={toggleVendorForm} userInfo={crrntUser} /> : null}
             </div>
             <div className={showPLForm ? "display_card " : "hidden"}>
-                {showPLForm ? <NewPLForm key={Math.random()} toggle={togglePLForm} userInfo={crrntUser} /> : null}
+                {showPLForm ? <NewPLForm key={Math.random()} toggle={togglePLForm} userInfo={crrntUser} fetchV={fetchVendors}/> : null}
             </div>
             <div className={showPL ? "display_card " : "hidden"}>
                 {showPL ? <PriceListCompare  key={Math.random()} currentVendor={curVend} userInfo={crrntUser} /> : null}

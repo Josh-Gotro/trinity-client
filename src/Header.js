@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { currentUser } from './services/Atom';
-import { useRecoilState, constSelector } from 'recoil';
+import { useRecoilState } from 'recoil';
 import './customCSS/Nav.css';
 
 function Header() {
@@ -30,7 +30,7 @@ function Header() {
                     <h1 >Mirpoix</h1>
                 </Link>
 
-                {greetUser()}
+                {/* {greetUser()} */}
 
                 <div className="Logout" onClick={logoutUser}>Logout</div>
             </>
@@ -51,11 +51,11 @@ function Header() {
         history.push('/')
     }
 
-    const greetUser = () => {
-        // console.log(person.username)
-        return person === undefined ?  `Greetings ${person.username}!` : null
-        // return `Greetings ${person.username}!`
-    }
+    // const greetUser = () => {
+    //     // console.log(person.username)
+    //     return person === undefined ?  `Greetings ${person.username}!` : null
+    //     // return `Greetings ${person.username}!`
+    // }
 
     return (
         <>

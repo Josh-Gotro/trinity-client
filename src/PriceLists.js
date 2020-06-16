@@ -16,7 +16,7 @@ const PriceLists = () => {
             return cpl.filter(pl => pl.user_id === usr.id)
                 .map(pl => {
                     // console.log(pl)
-                    return <PriceList key={pl.id} plInfo={pl} />
+                    return <div className="display_pl"><PriceList key={pl.id} plInfo={pl} /></div>
                 })
         }
         return null
@@ -24,7 +24,7 @@ const PriceLists = () => {
 
 
     return (
-        <div>
+        <div className="Items_container">
             {displayPL()}
         </div>
     );
