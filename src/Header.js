@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { currentUser } from './services/Atom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, constSelector } from 'recoil';
 import './customCSS/Nav.css';
 
 function Header() {
@@ -26,8 +26,8 @@ function Header() {
                     <div>Price Lists</div>
                 </Link>
 
-                <Link to="/">
-                    <h1>Mirpoix</h1>
+                <Link  className="Title" to="/">
+                    <h1 >Mirpoix</h1>
                 </Link>
 
                 {greetUser()}
@@ -37,7 +37,7 @@ function Header() {
         } else {
             return <>
                 <Link className="Title" to="/">
-                    <h1 className="Title">Mirpoix</h1>
+                    <h1 >Mirpoix</h1>
                 </Link>
             </>
         }

@@ -43,7 +43,7 @@ function LoginForm(props){
         <div className="LoginGrid">
         
             {/* <div className="NewForm"> */}
-            <h1>Mirpoix</h1>
+            <h2>Mirpoix</h2>
             <p> We help chefs</p>
             <p> make smarter purchases.</p>
             

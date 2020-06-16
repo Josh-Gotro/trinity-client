@@ -5,17 +5,21 @@ function Pl(props) {
     const listDates = () => {
 
         if (props.info.price_lists !== undefined) {
-            // console.log(props.info.id)
             return props.info.price_lists.map(pl => {
-            //   return   pl.vendor_id === props.info.id  ? 
-              return <div key={pl.id} id={pl.id}>{pl.date}</div> 
-            //   : null
+                return <div onClick={() => holler(pl)} className="ListDates" key={pl.id} id={pl.id}>{pl.date}</div> 
+
             })
         } 
     }
-    
+
+    const holler = (pl) => {
+        console.log(pl)
+        console.log(props)
+    }    
+ 
+
     return (
-        <div>
+        <div >
             {listDates()}
         </div>
     );

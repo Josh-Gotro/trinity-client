@@ -2,6 +2,7 @@ import React from 'react';
 import { currentPriceLists } from './services/Atom';
 import { useRecoilValue } from 'recoil';
 import PriceList from './PriceList';
+import './images/up.png'
 
 function PriceListCompare(props) {
     let cpl = useRecoilValue(currentPriceLists)
@@ -38,20 +39,34 @@ function PriceListCompare(props) {
                 return comparePL.item_details.map(i => {
                     if (itm.item_name === i.item_name) {
                         let priceDif = itm.price - i.price
-                        console.log(priceDif)
+                        priceDif = priceDif.toFixed(2)
                         if (priceDif < 0 ){ 
-                            return <><span key={Math.random()} >{itm.item_name}</span><span key={Math.random()} >DOWN</span><span key={Math.random()} >{`$${itm.price - i.price}`}</span><span key={Math.random()} >{`per ${itm.pack_size}`}</span><br></br></>
+                            return<>
+                                <span id="c1" key={Math.random()} >{itm.item_name}</span>
+                                <span id="c2" key={Math.random()} >DOWN</span>
+                                <span id="c3" key={Math.random()} >{`$${priceDif}`}</span>
+                                <span id="c4" key={Math.random()} >{`per ${itm.pack_size}`}</span>
+                            <br></br></>
                         } else if (priceDif > 0){
-                            return <><span key={Math.random()} >{itm.item_name}</span><span key={Math.random()} >UP</span><span key={Math.random()} >{`$${itm.price - i.price}`}</span><span key={Math.random()} >{`per ${itm.pack_size}`}</span><br></br></>
+                            return<>
+                                <span id="c1" key={Math.random()} >{itm.item_name}</span>
+                                <span id="c2" key={Math.random()} >UP</span>
+                                <span id="c3" key={Math.random()} >{`$${priceDif}`}</span>
+                                <span id="c4" key={Math.random()} >{`per ${itm.pack_size}`}</span>
+                            <br></br></>
                         } else {
-                            return <><span key={Math.random()} >{itm.item_name}</span><span key={Math.random()} >NO CHANGE</span><span key={Math.random()} >{`$${itm.price - i.price}`}</span ><span key={Math.random()} >{`per ${itm.pack_size}`}</span><br></br></>
+                            return<>
+                                <span id="c1" key={Math.random()} >{itm.item_name}</span>
+                                <span id="c2" key={Math.random()} >NO CHANGE</span>
+                                <span id="c3" key={Math.random()} >{`$${priceDif}`}</span>
+                                <span id="c4" key={Math.random()} >{`per ${itm.pack_size}`}</span>
+                            <br></br></>
 
                         }
                     }
                 })
             })
         } 
-
     }
 
     // choose price list to compare to most recent. default to second most recent.
@@ -75,13 +90,13 @@ function PriceListCompare(props) {
     // ^
 
     return (
-        <div>
+        <div className="GridPLC" >
             <br></br><br></br>
-            <div>{displayMostRecent()}</div>
+            <>{displayMostRecent()}</>
             <br></br><br></br>
-            <div>{displaySelected()}</div>
+            <>{displaySelected()}</>
             <br></br><br></br>
-            <div> {compareInvoices()}</div>
+            <> {compareInvoices()}</>
         </div>
     );
 }

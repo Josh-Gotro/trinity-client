@@ -4,61 +4,43 @@
   padding: 0;
 }
 
-
-  /* display: inline-grid;
-  grid-template-columns: 
-    [col-1-start]10% 
-    [col-1-end col-2-start]10% 
-    [col-2-end col-3-start]10%
-    [col-3-end col-4-start]auto 
-    [col-4-end col-5-start]10% 
-    [col-5-end col-6-start]10% 
-    [col-6-end col-7-start]10% 
-    [col-7-end];  */
-
-  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
-  /* background: url('./images/pass.jpg') no-repeat top center fixed;
-  background-size: contain;
-  min-height: 80vh;
-  height: 100%;
-  width: 100%;
-  color: whitesmoke;
-  text-align: center; */
-
-
 nav {
-    display: inline-grid;
-    width: 100%;
-  grid-template-columns: 
-    [col-1-start]10% 
-    [col-1-end col-2-start]10% 
+  opacity: 0.95;
+  display: inline-grid;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 5px;
+  grid-template-columns:
+    [col-1-start]10%
+    [col-1-end col-2-start]10%
     [col-2-end col-3-start]10%
-    [col-3-end col-4-start]auto 
-    [col-4-end col-5-start]10% 
-    [col-5-end col-6-start]10% 
-    [col-6-end col-7-start]10% 
-    [col-7-end]; 
-    align-items: center;
-    min-height: 10vh;
-    background: whitesmoke;
-    color: black;
-    /* text-align: center; */
-
+    [col-3-end col-4-start]auto
+    [col-4-end col-5-start]10%
+    [col-5-end col-6-start]10%
+    [col-6-end col-7-start]10%
+    [col-7-end];
+  align-items: center;
+  min-height: 8vh;
+  background: whitesmoke;
+  color: #ed1b70;
+  /* text-align: center; */
 }
-
 
 .Title {
   /* padding-left: 450px; */
-    grid-column: col-3-end;
-    align-items: center;
+  grid-column: col-3-end;
+  align-items: center;
+}
 
+h1 {
+      color: black;
 }
 
 .TitlePL {
-    grid-column-start: col-4-start;
-        align-items: left;
-    text-align: center;
-    /* padding-top: 5vmin; */
+  grid-column-start: col-4-start;
+  align-items: left;
+  text-align: center;
+  /* padding-top: 5vmin; */
   /* padding-right: 20px; */
   text-decoration: none;
   display: inline-grid;
@@ -68,33 +50,37 @@ nav {
 /* unvisited link */
 
 a:link {
-  color: black;
+  color: rgb(163, 168, 172);
   text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-  color: black;
+  color: rgb(163, 168, 172);
   text-decoration: none;
 }
 
 /* mouse over link */
 a:hover {
-  color: rgb(74, 74, 238);
+  color: #1c3f94;
   text-decoration: none;
 }
 
 /* selected link */
 a:active {
   color: black;
-  text-decoration: none
+  text-decoration: none;
 }
 
 /*  logout link */
 
 .Logout:hover {
-  color: rgb(74, 74, 238);
+  color: #1c3f94;
   cursor: pointer;
+}
+
+.Logout {
+  grid-column: col-6-end;
 }
 
 .footer {
@@ -106,5 +92,13 @@ a:active {
   background: whitesmoke;
   color: black;
   text-align: center;
+  height: flex;
 }
 
+."" {
+  display: none;
+}
+
+.unhidden {
+  display: inline;
+}

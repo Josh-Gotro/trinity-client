@@ -6,6 +6,7 @@ import NewPLForm from './NewPLForm';
 import { currentUser, selectedVendor, currentPriceLists, currentVendors } from './services/Atom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useHistory } from 'react-router-dom';
+import './App.css';
 
 
 function VendorsList() {
@@ -50,7 +51,7 @@ function VendorsList() {
     const myVendors = () => {
         if (vendors.length > 0 && crrntUser !== undefined) {
              return vendors.filter(vendor => vendor.user_id === crrntUser.id)
-                 .map(vendor => <><div className="Side"><Vendor key={vendor.id} vendorPL={curVend} vendorClick={handleVendorClick} vendorInfo={vendor} /></div></>)
+                 .map(vendor => <><div ><Vendor key={vendor.id} vendorPL={curVend} vendorClick={handleVendorClick} vendorInfo={vendor} /></div></>)
          } 
     }
 
@@ -62,7 +63,9 @@ function VendorsList() {
     const toggleVendorForm = () => {
 // -----------> added the !== statement in order to catch blank logins 
         if (crrntUser !== undefined && crrntUser.id) {
-            return setShowVendorForm(prev => !prev)
+            setShowPL(false)
+            setShowPLForm(false)
+            setShowVendorForm(prev => !prev)
         } else {
             alert("Please login or sign up")
             return history.push('/')
@@ -71,32 +74,36 @@ function VendorsList() {
     const togglePLForm = () => {
 // -----------> added the !== statement in order to catch blank logins 
         if (crrntUser !== undefined && crrntUser.id) {
-            return setShowPLForm(prev => !prev)
+            setShowPLForm(prev => !prev)
+            setShowVendorForm(false)
+            setShowPL(false)
         } else {
             history.push('/')
             return alert("Please login or sign up")
         };
     }
     const togglePL = () => {
+        setShowPL(false)
+        setShowPLForm(false)
+        setShowVendorForm(false)
         setShowPL(prev => !prev)
         console.log(priceLists)
     }
 
     return (
-        <div>
-            <div className="card">
+        <div className="VendorsGrid">
+            <div className="Side">
                 {myVendors()}
-
-                {<button className="NewForm" onClick={toggleVendorForm}>Add Vendor</button>}<br></br>
-                {<button className="NewForm" onClick={togglePLForm}>New Price List</button>}
+                {<button className="BasicButton" onClick={toggleVendorForm}>Add Vendor</button>}<br></br>
+                {<button className="BasicButton" onClick={togglePLForm}>New Price List</button>}<br></br>
             </div>
-            <div>
+            <div className={showVendorForm ? "display_card " : "hidden"}>
                 {showVendorForm ? <NewVendorForm key={Math.random()} toggle={toggleVendorForm} userInfo={crrntUser} /> : null}
             </div>
-            <div>
+            <div className={showPLForm ? "display_card " : "hidden"}>
                 {showPLForm ? <NewPLForm key={Math.random()} toggle={togglePLForm} userInfo={crrntUser} /> : null}
             </div>
-            <div className="display_card ">
+            <div className={showPL ? "display_card " : "hidden"}>
                 {showPL ? <PriceListCompare  key={Math.random()} currentVendor={curVend} userInfo={crrntUser} /> : null}
             </div>
         </div>

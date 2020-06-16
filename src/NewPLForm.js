@@ -131,7 +131,7 @@ function NewPLForm(props) {
                 <h1>New Price List</h1>
                 <br></br>
                 <label>
-                    <select ref={register({ required: true })} name="vendor" >
+                    <select className="select" ref={register({ required: true })} name="vendor" >
                         <option value="" > Select Vendor</option>
                         {vendorOptions()}
                     </select>

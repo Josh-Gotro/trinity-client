@@ -5,7 +5,7 @@ function Vendor(props) {
 
     const showMyVendors = () => {
         if (props !== undefined) {
-            return <><div onClick={() => props.vendorClick(props.vendorInfo)}>{props.vendorInfo.name}</div> <Pl info={props.vendorInfo}/> </>
+            return <><div className="List" onClick={() => props.vendorClick(props.vendorInfo)}>{props.vendorInfo.name}</div> <Pl info={props.vendorInfo}/> </>
         };
     }
 

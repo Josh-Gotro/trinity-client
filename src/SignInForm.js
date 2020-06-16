@@ -46,7 +46,7 @@ function SignInForm(props) {
     return(
         <div className="LoginGrid">
         {/* <div style={formDivStyle}> */}
-            <h1>Mirpoix</h1>
+            <h2>Mirpoix</h2>
             <p> We help chefs</p>
             <p> make smarter purchases.</p>
             <form className="LoginForm" onSubmit={handleSubmit(onSubmit)}>

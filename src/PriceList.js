@@ -20,12 +20,12 @@ function PriceList({plInfo}){
     }
 
     return (
-        <div>
+        <>
             {date}
             {plItem()}
 
            
-        </div>
+        </>
     );
 }
 
