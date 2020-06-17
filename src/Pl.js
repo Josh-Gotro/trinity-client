@@ -1,6 +1,9 @@
 import React from 'react';
+import { compareMe } from './services/Atom';
+import { useRecoilState } from 'recoil';
 
 function Pl(props) {
+    const [selectCompare, setSelectCompare] = useRecoilState(compareMe);
 
     const listDates = () => {
 
@@ -13,8 +16,8 @@ function Pl(props) {
     }
 
     const holler = (pl) => {
-        console.log(pl)
-        console.log(props)
+        setSelectCompare(pl)
+        console.log(selectCompare)
     }    
  
 

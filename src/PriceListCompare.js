@@ -1,11 +1,12 @@
 import React from 'react';
-import { currentPriceLists } from './services/Atom';
+import { currentPriceLists, compareMe } from './services/Atom';
 import { useRecoilValue } from 'recoil';
 import PriceList from './PriceList';
 import './images/up.png'
 
 function PriceListCompare(props) {
     let cpl = useRecoilValue(currentPriceLists)
+    let selectCompare = useRecoilValue(compareMe)
     let usrId = props.userInfo.id
     let vndrId = props.currentVendor.id
     let date = "0000-00-00"
@@ -69,21 +70,41 @@ function PriceListCompare(props) {
 
     // choose price list to compare to most recent. default to second most recent.
     const displaySelected = () => {
-        choosePL();
-        return <PriceList key={comparePL.id} plInfo={comparePL} />
+        if (selectCompare.id !== undefined) { 
+            console.log("gotcha my dude!!!!!")
+            findPL()
+            return <PriceList key={comparePL.id} plInfo={comparePL} />
+        }else{
+            choosePL();
+            return <PriceList key={comparePL.id} plInfo={comparePL} />
+        }
+            
+    }
+
+    const findPL = () => {
+        if (cpl !== undefined) {
+            console.log("im everywhere")
+            return cpl.filter(pl => pl.id === selectCompare.id).map(pl=> {
+                compareDate = pl.date
+                comparePL = pl
+                console.log(comparePL)
+                console.log(compareDate)
+            })
+        }
     }
 
     const choosePL = () => {
         // build in a trigger that defaults to second most recent price list if another price list is not selected. 
-        if (cpl !== undefined) {
-            return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId)
-                .map(pl => {
-                    if (pl.date > compareDate && pl.date !== date) {
-                        compareDate = pl.date
-                        comparePL = pl
-                    }
-                })
-        }
+            if (cpl !== undefined) {
+                return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId)
+                    .map(pl => {
+                        console.log(pl)
+                        if (pl.date > compareDate && pl.date !== date) {
+                            compareDate = pl.date
+                            comparePL = pl
+                        }
+                    })
+            }
     }
     // ^
 

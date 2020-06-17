@@ -25,6 +25,11 @@ export const currentItems = atom({
     default: {}, // default value (aka initial value)
 });
 
+export const compareMe = atom({
+    key: 'compareMe', // unique ID (with respect to other atoms/selectors)
+    default: {}, // default value (aka initial value)
+});
+
 
 
 
