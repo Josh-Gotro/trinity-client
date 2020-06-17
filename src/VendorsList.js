@@ -65,8 +65,14 @@ function VendorsList() {
     }
 
     const handleVendorClick = (e) => {
-        setCurVend(e)
-        togglePL()
+        console.log(e)
+        if (showPL === true && curVend.id === e.id){ 
+            setCurVend(e)
+            setShowPL(prev => !prev)
+        } else {
+            setCurVend(e)
+            togglePL()
+        }
     }
 
     const toggleVendorForm = () => {
@@ -110,7 +116,7 @@ function VendorsList() {
                 {showVendorForm ? <NewVendorForm key={Math.random()} toggle={toggleVendorForm} userInfo={crrntUser} /> : null}
             </div>
             <div className={showPLForm ? "display_card " : "hidden"}>
-                {showPLForm ? <NewPLForm key={Math.random()} toggle={togglePLForm} userInfo={crrntUser} fetchV={fetchVendors}/> : null}
+                {showPLForm ? <NewPLForm key={Math.random()} toggle={togglePLForm} userInfo={crrntUser} fetchPL={fetchPL} fetchV={fetchVendors}/> : null}
             </div>
             <div className={showPL ? "display_card " : "hidden"}>
                 {showPL ? <PriceListCompare  key={Math.random()} currentVendor={curVend} userInfo={crrntUser} /> : null}

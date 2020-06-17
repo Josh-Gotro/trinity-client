@@ -80,7 +80,7 @@ a:active {
 }
 
 .Logout {
-  grid-column: col-6-end;
+  grid-column: col-6-start;
 }
 
 .footer {
@@ -95,7 +95,7 @@ a:active {
   height: flex;
 }
 
-."" {
+.hidden {
   display: none;
 }
 

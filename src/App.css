@@ -3,7 +3,6 @@
   padding: 0;
 }
 
-
 .App {
   text-align: center;
 }
@@ -60,10 +59,10 @@ body {
 
 .AccentStripe {
   grid-column-start: col-5-start;
-   grid-row-start: row-1-start;
-       grid-row-end: row-6-end;
+  grid-row-start: row-1-start;
+  grid-row-end: row-6-end;
   background-color: #1c3f94;
-   /* box-shadow: 10px 15px #ed1b70; */
+  /* box-shadow: 10px 15px #ed1b70; */
   /* opacity: .98; */
   height: 100%;
 }
@@ -81,7 +80,7 @@ input[type="text"] {
   box-sizing: border-box;
   border: none;
   color: rgb(100, 100, 224);
-  border-bottom: 3px solid rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
   border-radius: 4px;
   transition-duration: 0.4s;
   background-color: whitesmoke;
@@ -96,7 +95,7 @@ input[type="password"] {
   box-sizing: border-box;
   border: none;
   color: rgb(100, 100, 224);
-  border-bottom: 3px solid rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
   border-radius: 4px;
   transition-duration: 0.4s;
   background-color: whitesmoke;
@@ -111,12 +110,28 @@ input[type="date"] {
   box-sizing: border-box;
   border: none;
   color: rgb(100, 100, 224);
-  border-bottom: 3px solid rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
   border-radius: 4px;
   transition-duration: 0.4s;
   background-color: whitesmoke;
   opacity: 0.95;
   outline: none;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 5px 5px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: none;
+  color: rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  background-color: whitesmoke;
+  opacity: 0.95;
+  outline: none;
+  cursor: pointer;
 }
 
 input[type="submit"] {
@@ -126,12 +141,13 @@ input[type="submit"] {
   box-sizing: border-box;
   border: none;
   color: rgb(100, 100, 224);
-  border-bottom: 3px solid rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
   border-radius: 4px;
   transition-duration: 0.4s;
   background-color: whitesmoke;
   opacity: 0.95;
   outline: none;
+  cursor: pointer;
 }
 
 .select {
@@ -141,7 +157,7 @@ input[type="submit"] {
   box-sizing: border-box;
   border: none;
   color: rgb(100, 100, 224);
-  border-bottom: 3px solid rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
   border-radius: 4px;
   transition-duration: 0.4s;
   background-color: whitesmoke;
@@ -181,7 +197,7 @@ p {
   width: 75%;
   outline: none;
   cursor: pointer;
-} 
+}
 
 .LoginButtonSwap {
   grid-column-start: col-4-end;
@@ -308,11 +324,10 @@ p {
   color: whitesmoke;
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
-  opacity: 0.90;
+  opacity: 0.9;
   /* width: max-content; */
   margin: 20px;
   /* overflow: scroll; */
-
 }
 
 .display_card_item {
@@ -327,14 +342,14 @@ p {
   color: whitesmoke;
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
-  opacity: 0.90;
+  opacity: 0.9;
   /* width: max-content; */
   margin: 20px;
 }
 
 .display_pl {
-   display: grid;
-    grid-template-columns:
+  display: grid;
+  grid-template-columns:
     [col-1-start]30%
     [col-1-end col-2-start]30%
     [col-2-end col-3-start]30%
@@ -360,7 +375,7 @@ p {
   color: whitesmoke;
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
-  opacity: 0.90;
+  opacity: 0.9;
   /* width: max-content; */
   margin: 20px;
 }
@@ -372,7 +387,6 @@ p {
   align-items: center;
   align-content: center;
   justify-content: center;
-
 }
 
 .NewForm {
@@ -400,68 +414,121 @@ p {
   width: 100%;
   height: 100%;
   display: grid;
- /* grid-template-columns: repeat( auto-fit, minmax(1fr, 1fr) ); */
- grid-template-columns: [a]1fr [b]1fr [c];
- border: 5px 10px #ed1b70;
-  }
+  /* grid-template-columns: repeat( auto-fit, minmax(1fr, 1fr) ); */
+  grid-template-columns: [a]1fr [b]1fr [c];
+  border: 5px 10px #ed1b70;
+}
 
-  .plc_title {
-    grid-column-start: a;
-    grid-column-end: c;
-    
-  }
+.plc_title {
+  grid-column-start: a;
+  grid-column-end: c;
+}
 
-  .col {
-    /* place-self: center; */
-    align-self: stretch;
-    display: grid;
-    grid-template-rows: auto ;
-    grid-template-columns: [a]1fr [b]1fr [c]1fr [d];
-  }
+.col {
+  /* place-self: center; */
+  align-self: stretch;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: [a]1fr [b]1fr [c]1fr [d];
+}
 
+.colD {
+  place-self: center;
+  align-self: start;
+  border-bottom: 20px 20px whitesmoke;
+  grid-column-start: a;
+  grid-column-end: d;
+  padding-bottom: 5px;
+}
 
-  .colD {
-    place-self: center;
-    align-self: start;
-    border-bottom: 20px 20px whitesmoke;
-    grid-column-start: a;
-    grid-column-end: d;
-    padding-bottom: 5px;
-  }
+.GridPLCBottom {
+  padding: 15px;
+  border-top: 20px 20px #ed1b70;
+  margin-top: 50px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto;
+}
 
-  .GridPLCBottom {
-    padding: 15px;
-     border-top: 20px 20px #ed1b70;
-    margin-top: 50px;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: auto ;
-  }
+.row {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: [a]1fr [b]1fr [c]1fr [d]1fr [e];
+}
 
-  .row {
-    display: grid;
-    grid-template-rows: auto ;
-    grid-template-columns: [a]1fr [b]1fr [c]1fr [d]1fr [e];
-  }
+#ca {
+  padding-bottom: 15px;
+  grid-column-start: a;
+}
 
-  #ca {
-    padding-bottom: 15px;    
-    grid-column-start: a;}
-  
-  #cs {
-    padding-bottom: 15px;
-    grid-column-start: b;}
-  
-  #cd {
-    padding-bottom: 15px;
-    grid-column-start: c;}
-  
-  #cf {
-    padding-bottom: 15px;     
-    grid-column-start: d;
-  }
+#cs {
+  padding-bottom: 15px;
+  grid-column-start: b;
+}
 
-  
+#cd {
+  padding-bottom: 15px;
+  grid-column-start: c;
+}
 
+#cf {
+  padding-bottom: 15px;
+  grid-column-start: d;
+}
 
+.colPLI {
+  /* place-self: center; */
+  align-self: center;
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: [a]1fr [b]1fr [c]1fr [d];
+  padding-bottom: 5px;
+}
+.aa {
+  color: #ed1b70;
+  place-self: end;
+  align-self: start;
+  grid-column-start: a;
+}
+
+.dd {
+  color: #ed1b70;
+  place-self: center;
+  align-self: start;
+  grid-column-start: b;
+}
+
+.ff {
+  color: #ed1b70;
+  place-self: start;
+  align-self: start;
+  grid-column-start: c;
+}
+
+.NewPLForm {
+  padding-left: 45px;
+  padding-right: 45px;
+  padding-bottom: 45px;
+}
+
+.BasicButton2 {
+  background-color: whitesmoke;
+  color: #ed1b70;
+  margin-top: 25px;
+  padding: 12px 45px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* margin: 10%; */
+  font-size: 14px;
+  min-height: 30px;
+  min-width: 100%;
+  align-self: top;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  width: 75%;
+  outline: none;
+  cursor: pointer;
+}

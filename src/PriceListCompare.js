@@ -38,26 +38,25 @@ function PriceListCompare(props) {
                 return comparePL.item_details.map(i => {
                     if (itm.item_name === i.item_name) {
                         let priceDif = itm.price - i.price
-                        priceDif = priceDif.toFixed(2)
                         if (priceDif < 0) {
                             return <>
                                 <div id="ca" key={Math.random()} >{itm.item_name}</div>
                                 <div id="cs"  key={Math.random()} >DOWN</div>
-                                <div id="cd" key={Math.random()} >{`$${priceDif}`}</div>
+                                <div id="cd" key={Math.random()} >{`$${priceDif.toFixed(2)}`}</div>
                                 <div id="cf"  key={Math.random()} >{`per ${itm.pack_size}`}</div>
                                 </>
                         } else if (priceDif > 0) {
                             return <>
                                 <div id="ca"  key={Math.random()} >{itm.item_name}</div>
                                 <div id="cs"  key={Math.random()} >UP</div>
-                                <div id="cd"  key={Math.random()} >{`$${priceDif}`}</div>
+                                <div id="cd" key={Math.random()} >{`$${priceDif.toFixed(2)}`}</div>
                                 <div id="cf"  key={Math.random()} >{`per ${itm.pack_size}`}</div>
                                 </>
                         } else {
                             return <>
                                 <div id="ca"  key={Math.random()} >{itm.item_name}</div>
                                 <div id="cs"  key={Math.random()} >NO CHANGE</div>
-                                <div id="cd"  key={Math.random()} >{`$${priceDif}`}</div>
+                                <div id="cd" key={Math.random()} >{`$${priceDif.toFixed(2)}`}</div>
                                 <div id="cf"  key={Math.random()} >{`per ${itm.pack_size}`}</div>
                                 </>
 

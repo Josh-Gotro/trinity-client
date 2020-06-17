@@ -11,6 +11,7 @@ function NewPLForm(props) {
     // const [currentPL, setPl] = useState({})
     const [plid, setPlid] = useState("")
     const [itemDetails, setItemDetails] = useState("")
+    const [itemId, setItemId] = useState("")
     const [showCreate, setCreate] = useState(true);
     const [showAddItem, setAddItem] = useState(false);
     const [newItems, setNewItems] = useState([]);
@@ -77,6 +78,7 @@ function NewPLForm(props) {
                 .then(resp => resp.json())
                 .then(jsn => {
                     createItemDetail(jsn.id, data);
+                    setItemId(jsn.id)
                     r.target.reset();
                 })
         }
@@ -105,7 +107,7 @@ function NewPLForm(props) {
                 .then(res => res.json())
                 .then(json => {
                     setItemDetails(json)
-                    console.log(itemDetails)
+                    // console.log(itemDetails)
                 })
         }
     }
@@ -122,14 +124,15 @@ function NewPLForm(props) {
         alert(`Price List Created`)
         props.toggle()
         props.fetchV()
+        props.fetchPL()
     }
 
     const listItems = () => {
-        return <ListItems items={newItems} />
+        return <ListItems key={Math.random()} thisID={itemId} itemDetails={itemDetails} fetchV={props.fetchV} plID={plid} items={newItems} />
     }
 
     return (
-        <div>
+        <div className="NewPLForm">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <br></br>
                 <h1>New Price List</h1>
@@ -147,7 +150,9 @@ function NewPLForm(props) {
                 </label>
                 {showCreate ? <input type="submit" value="Create Price List" /> : null}<br></br><br></br>
             </form>
+
             {listItems()}
+
             <form onSubmit={handleSubmit(onItemSubmit)}>
                 {showAddItem ? <label>
                     Item Name:
@@ -161,7 +166,7 @@ function NewPLForm(props) {
                 {showAddItem ? <input type="submit" value="+ Item" /> : null}
             </form>
 
-            {showAddItem ? <button type="button" onClick={finishSequence} >finished</button> : null}
+            {showAddItem ? <button className="BasicButton2" type="button" onClick={finishSequence} >finished</button> : null}
 
         </div>
     );

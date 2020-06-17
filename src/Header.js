@@ -32,7 +32,7 @@ function Header() {
 
                 {/* {greetUser()} */}
 
-                <div className="Logout" onClick={logoutUser}>Logout</div>
+                <div className="Logout" onClick={logoutUser}>{greetUser()}</div>
             </>
         } else {
             return <>
@@ -51,11 +51,9 @@ function Header() {
         history.push('/')
     }
 
-    // const greetUser = () => {
-    //     // console.log(person.username)
-    //     return person === undefined ?  `Greetings ${person.username}!` : null
-    //     // return `Greetings ${person.username}!`
-    // }
+    const greetUser = () => {
+        return person !== undefined ?  `*${person.username}* Logout` : "Login";
+    }
 
     return (
         <>

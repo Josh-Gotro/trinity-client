@@ -23,7 +23,7 @@ const Items = () => {
     }
 
     return (
-        <div className="Items_container">
+        <div key={Math.random()} className="Items_container">
 
             {displayPL()}
 

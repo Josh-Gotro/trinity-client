@@ -23,8 +23,6 @@ function PriceList({plInfo}){
         <>
             <div className="colD">{date}</div>
             {plItem()}
-
-           
         </>
     );
 }
