@@ -135,7 +135,7 @@ function NewPLForm(props) {
         <div className="NewPLForm">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <br></br>
-                <h1>New Price List</h1>
+                <h1 className="FormTitle" >New Price List</h1>
                 <br></br>
                 <label>
                     <select className="select" ref={register({ required: true })} name="vendor" >

@@ -73,6 +73,10 @@ h1 {
   text-align: center;
 }
 
+.FormTitle {
+  color: #ed1b70;
+}
+
 input[type="text"] {
   width: 100%;
   padding: 5px 5px;
@@ -416,12 +420,14 @@ p {
   display: grid;
   /* grid-template-columns: repeat( auto-fit, minmax(1fr, 1fr) ); */
   grid-template-columns: [a]1fr [b]1fr [c];
-  border: 5px 10px #ed1b70;
 }
 
 .plc_title {
+  font-size: 18px;
+  place-self: center;
   grid-column-start: a;
   grid-column-end: c;
+  padding-bottom: 15px;
 }
 
 .col {
@@ -458,21 +464,30 @@ p {
 }
 
 #ca {
+  border-top: 2px solid rgb(163, 168, 172);
+  color: #ed1b70;
   padding-bottom: 15px;
   grid-column-start: a;
 }
 
 #cs {
+  border-top: 2px solid rgb(163, 168, 172);
+  color: #ed1b70;
   padding-bottom: 15px;
   grid-column-start: b;
 }
 
 #cd {
+  border-top: 2px solid rgb(163, 168, 172);
+  color: #ed1b70;
   padding-bottom: 15px;
   grid-column-start: c;
 }
 
 #cf {
+  border-top: 2px solid rgb(163, 168, 172);
+  margin-right: 40px;
+  color: #ed1b70;
   padding-bottom: 15px;
   grid-column-start: d;
 }
@@ -487,21 +502,21 @@ p {
   padding-bottom: 5px;
 }
 #aa {
-  color: #ed1b70;
+  color: whitesmoke;
   place-self: end;
   align-self: start;
   grid-column-start: a;
 }
 
 #dd {
-  color: #ed1b70;
+  color: whitesmoke;
   place-self: center;
   align-self: start;
   grid-column-start: b;
 }
 
 #ff {
-  color: #ed1b70;
+  color: whitesmoke;
   place-self: start;
   align-self: start;
   grid-column-start: c;

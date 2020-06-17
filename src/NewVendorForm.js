@@ -45,11 +45,11 @@ function NewVendorForm(props) {
 
 
     return (
-        <div>
+        <div className="NewPLForm">
             
             <form onSubmit={handleSubmit(onSubmit)}>
                 <br></br>
-                <h1>New Vendor</h1>
+                <h1 className="FormTitle" >New Vendor</h1>
                 <br></br>
                 <label>
                     Company Name:

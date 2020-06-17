@@ -13,9 +13,9 @@ function Item(props) {
 
     return (
         <>
-            <div id="aa"> {props.itemName} </div> 
-            <div id="dd"> {`$${props.itemDetails.price}`}</div>
-            <div id="ff"> {packSize()}</div>
+            <div  id="aa"> {props.itemName} </div> 
+            <div  id="dd"> {`$${props.itemDetails.price}`}</div>
+            <div  id="ff"> {packSize()}</div>
         </>
     );
 }
