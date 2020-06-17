@@ -3,7 +3,6 @@ import Vendor from './Vendor'
 import PriceListCompare from './PriceListCompare'
 import NewVendorForm from './NewVendorForm';
 import NewPLForm from './NewPLForm';
-import PriceList from './PriceList'
 import { currentUser, selectedVendor, currentPriceLists, currentVendors, liveViewPl } from './services/Atom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useHistory } from 'react-router-dom';

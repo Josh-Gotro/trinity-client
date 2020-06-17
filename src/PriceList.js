@@ -2,7 +2,7 @@ import React from 'react';
 import Item from './Item';
 
 function PriceList(props){
-    console.log(props)
+    // console.log(props)
 
     const convertDetails = () => {
         if (props.plInfo.name !== undefined){

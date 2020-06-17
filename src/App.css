@@ -77,6 +77,20 @@ h1 {
   color: #ed1b70;
 }
 
+h3 {
+  align-items: center;
+  text-align: center;
+}
+
+.FormTitle2 {
+  color: #ed1b70;
+  place-self: center;
+  align-self: start;
+  grid-column-start: a;
+  grid-column-end: d;
+  padding-bottom: 5px;
+}
+
 input[type="text"] {
   width: 100%;
   padding: 5px 5px;
@@ -240,6 +254,25 @@ p {
   min-width: 100%;
   align-self: top;
   border-radius: 4px;
+  transition-duration: 0.4s;
+  width: 75%;
+  outline: none;
+  cursor: pointer;
+}
+
+.deleteButton {
+  grid-column-start: a;
+  grid-column-end: d;
+  background-color: transparent;
+  color: #ed1b70;
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  align-self: center;
+  justify-self: center;
   transition-duration: 0.4s;
   width: 75%;
   outline: none;
@@ -555,4 +588,30 @@ p {
   width: 75%;
   outline: none;
   cursor: pointer;
+}
+
+.plPage {
+  /* place-self: center; */
+  align-self: center;
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: [a]1fr [b]1fr [c]1fr [d];
+  padding-bottom: 5px;
+
+
+  align-items: center;
+  min-width: 350px;
+  max-width: 350px;
+  min-height: 100px;
+  box-shadow: 0 4px 8px 0 rgb(163, 168, 172);
+  box-shadow: 10px 15px rgb(163, 168, 172);
+  box-shadow: 5px 10px #ed1b70;
+  background-color: #1c3f94;
+  color: whitesmoke;
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  opacity: 0.9;
+  /* width: max-content; */
+  margin: 20px;
 }
