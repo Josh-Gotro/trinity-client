@@ -31,7 +31,7 @@ function Home() {
                     console.log(user)
                 })
         }
-    }, [setUser, setPerson])
+    }, [setUser, setPerson, user])
 
     const handleLogin = (user) => {
         setUser(user);

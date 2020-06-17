@@ -35,6 +35,10 @@ export const liveViewPl = atom({
     default: { date: "", name: "", id: 0, size: "", price: 0 }, // default value (aka initial value)
 });
 
+export const dbItems = atom({
+    key: 'dbItems', // unique ID (with respect to other atoms/selectors)
+    default: { date: "", name: "", id: 0, size: "", price: 0 }, // default value (aka initial value)
+});
 
 
 

@@ -3,7 +3,7 @@ import Vendor from './Vendor'
 import PriceListCompare from './PriceListCompare'
 import NewVendorForm from './NewVendorForm';
 import NewPLForm from './NewPLForm';
-import { currentUser, selectedVendor, currentPriceLists, currentVendors, liveViewPl } from './services/Atom';
+import { currentUser, selectedVendor, currentPriceLists, currentVendors } from './services/Atom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useHistory } from 'react-router-dom';
 import './App.css';
@@ -19,7 +19,6 @@ function VendorsList() {
     const [showPL, setShowPL] = useState(false);
 
     let crrntUser = useRecoilValue(currentUser);
-    let lvp = useRecoilValue(liveViewPl)
     let history = useHistory();
 
     useEffect(() => {

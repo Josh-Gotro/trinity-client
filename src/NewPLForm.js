@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ListItems from './ListItems'
-import { currentVendors, currentUser, currentPriceLists, liveViewPl } from './services/Atom';
-import { useRecoilValue, useRecoilState } from 'recoil';
+import { currentVendors, currentUser} from './services/Atom';
+import { useRecoilValue} from 'recoil';
 import { useForm } from "react-hook-form";
 
 
@@ -15,14 +15,12 @@ function NewPLForm(props) {
     const [showCreate, setCreate] = useState(true);
     const [showAddItem, setAddItem] = useState(false);
     const [newItems, setNewItems] = useState([]);
-    const [liveView, setLiveView] = useRecoilState(liveViewPl)
+
  
-    let cpl = useRecoilValue(currentPriceLists)
     let vendors = useRecoilValue(currentVendors)
     let crrntUser = useRecoilValue(currentUser)
 
-    let liveDate = null
-    let liveData = {}
+
 
     const vendorOptions = () => {
         if (vendors.length > 0) {
@@ -53,7 +51,6 @@ function NewPLForm(props) {
                 .then(dta => {
                     // console.log(dta)
                     setPlid(dta.id)
-                    liveDate = data.date
                     toggleCreate()
                     toggleAddItem()
                 })
@@ -81,7 +78,6 @@ function NewPLForm(props) {
                 .then(jsn => {
                     createItemDetail(jsn.id, data);
                     setItemId(jsn.id)
-                    liveData = data
                     r.target.reset();
                 })
         }
