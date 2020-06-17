@@ -267,7 +267,7 @@ p {
   grid-template-columns:
     [col-1-start]25%
     [col-1-end col-2-start]auto
-    [col-2-end col-3-start]20%
+    [col-2-end col-3-start]25%
     [col-3-end];
 
   opacity: 0.99;
@@ -322,16 +322,25 @@ p {
 .display_card {
   min-height: 400px;
   box-shadow: 0 4px 8px 0 rgb(163, 168, 172);
-  /* box-shadow: 10px 15px rgb(163, 168, 172); */
   box-shadow: 10px 15px #ed1b70;
   background-color: #1c3f94;
   color: whitesmoke;
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
   opacity: 0.9;
-  /* width: max-content; */
   margin: 20px;
-  /* overflow: scroll; */
+}
+
+.display_card2 {
+  min-height: 400px;
+  box-shadow: 10px 15px rgb(163, 168, 172);
+  background-color: #1c3f94;
+  color: whitesmoke;
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  opacity: 0.9;
+  margin: 20px;
+  grid-column-start: col-2-end;
 }
 
 .display_card_item {

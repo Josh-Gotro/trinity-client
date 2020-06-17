@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ListItems from './ListItems'
-import { currentVendors, currentUser } from './services/Atom';
-import { useRecoilValue } from 'recoil';
+import { currentVendors, currentUser, currentPriceLists, liveViewPl } from './services/Atom';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { useForm } from "react-hook-form";
 
 
@@ -15,11 +15,14 @@ function NewPLForm(props) {
     const [showCreate, setCreate] = useState(true);
     const [showAddItem, setAddItem] = useState(false);
     const [newItems, setNewItems] = useState([]);
+    const [liveView, setLiveView] = useRecoilState(liveViewPl)
  
-
-
+    let cpl = useRecoilValue(currentPriceLists)
     let vendors = useRecoilValue(currentVendors)
     let crrntUser = useRecoilValue(currentUser)
+
+    let liveDate = null
+    let liveData = {}
 
     const vendorOptions = () => {
         if (vendors.length > 0) {
@@ -48,14 +51,13 @@ function NewPLForm(props) {
             })
                 .then(resp => resp.json())
                 .then(dta => {
-                    console.log(dta)
+                    // console.log(dta)
                     setPlid(dta.id)
+                    liveDate = data.date
                     toggleCreate()
                     toggleAddItem()
-
                 })
         }
-
     }
 
     const onItemSubmit = (data, r) => {
@@ -79,13 +81,14 @@ function NewPLForm(props) {
                 .then(jsn => {
                     createItemDetail(jsn.id, data);
                     setItemId(jsn.id)
+                    liveData = data
                     r.target.reset();
                 })
         }
     }
 
     const createItemDetail = (itemId, data) => {
-        // console.log(data)
+        // setLiveView({date: liveDate, name: data.name, id: plid, size: data.size, price: data.price })
         const token = localStorage.getItem("token")
 
         if (token) {
@@ -169,6 +172,7 @@ function NewPLForm(props) {
             {showAddItem ? <button className="BasicButton2" type="button" onClick={finishSequence} >finished</button> : null}
 
         </div>
+
     );
 }
 

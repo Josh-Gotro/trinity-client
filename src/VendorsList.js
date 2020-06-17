@@ -3,7 +3,8 @@ import Vendor from './Vendor'
 import PriceListCompare from './PriceListCompare'
 import NewVendorForm from './NewVendorForm';
 import NewPLForm from './NewPLForm';
-import { currentUser, selectedVendor, currentPriceLists, currentVendors } from './services/Atom';
+import PriceList from './PriceList'
+import { currentUser, selectedVendor, currentPriceLists, currentVendors, liveViewPl } from './services/Atom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useHistory } from 'react-router-dom';
 import './App.css';
@@ -19,7 +20,7 @@ function VendorsList() {
     const [showPL, setShowPL] = useState(false);
 
     let crrntUser = useRecoilValue(currentUser);
-
+    let lvp = useRecoilValue(liveViewPl)
     let history = useHistory();
 
     useEffect(() => {
@@ -60,7 +61,7 @@ function VendorsList() {
     const myVendors = () => {
         if (vendors.length > 0 && crrntUser !== undefined) {
              return vendors.filter(vendor => vendor.user_id === crrntUser.id)
-                 .map(vendor => <><div ><Vendor key={vendor.id} vendorPL={curVend} vendorClick={handleVendorClick} vendorInfo={vendor} /></div></>)
+                 .map(vendor => <div key={Math.random()}><Vendor key={vendor.id} vendorPL={curVend} vendorClick={handleVendorClick} vendorInfo={vendor} /></div>)
          } 
     }
 
@@ -109,8 +110,8 @@ function VendorsList() {
         <div className="VendorsGrid">
             <div className="Side">
                 {myVendors()}
-                {<button className="BasicButton" onClick={toggleVendorForm}>Add Vendor</button>}<br></br>
-                {<button className="BasicButton" onClick={togglePLForm}>New Price List</button>}<br></br>
+                {<button className="BasicButton" onClick={toggleVendorForm}>Add Vendor</button>}
+                {<button className="BasicButton" onClick={togglePLForm}>New Price List</button>}
             </div>
             <div className={showVendorForm ? "display_card " : "hidden"}>
                 {showVendorForm ? <NewVendorForm key={Math.random()} toggle={toggleVendorForm} userInfo={crrntUser} /> : null}
@@ -121,6 +122,10 @@ function VendorsList() {
             <div className={showPL ? "display_card " : "hidden"}>
                 {showPL ? <PriceListCompare  key={Math.random()} currentVendor={curVend} userInfo={crrntUser} /> : null}
             </div>
+            {/* <div className={showPLForm ? "display_card2 " : "hidden"}>
+                {showPLForm ? <PriceList key={Math.random()} plInfo={lvp} userInfo={crrntUser} /> : null}
+            </div> */}
+            
         </div>
     );
 

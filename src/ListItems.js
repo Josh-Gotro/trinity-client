@@ -8,7 +8,7 @@ const ListItems = (props) => {
         // setShowItem(true)
         if (props.items.length > 0 ) { 
             return props.items.map(item => {
-                console.log(item)
+                // console.log(item)
               return <Item key={Math.random()} myID={props.itemDetails.id} itemName={item.name} itemDetails={item} />
 
             
