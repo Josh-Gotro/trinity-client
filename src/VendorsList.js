@@ -65,7 +65,7 @@ function VendorsList() {
     }
 
     const handleVendorClick = (e) => {
-        console.log(e)
+        // console.log(e)
         if (showPL === true && curVend.id === e.id){ 
             setCurVend(e)
             setShowPL(prev => !prev)
@@ -102,7 +102,7 @@ function VendorsList() {
         setShowPLForm(false)
         setShowVendorForm(false)
         setShowPL(prev => !prev)
-        console.log(priceLists)
+        // console.log(priceLists)
     }
 
     return (

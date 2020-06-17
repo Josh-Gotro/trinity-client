@@ -33,7 +33,7 @@ function PriceListCompare(props) {
     // ^
 
     const compareInvoices = () => {
-        console.log(newestPL, comparePL)
+        // console.log(newestPL, comparePL)
         if (comparePL.item_details !== undefined) {
             return newestPL.item_details.map(itm => {
                 return comparePL.item_details.map(i => {
@@ -42,24 +42,24 @@ function PriceListCompare(props) {
                         if (priceDif < 0) {
                             return <>
                                 <div id="ca" key={Math.random()} >{itm.item_name}</div>
-                                <div id="cs"  key={Math.random()} >DOWN</div>
+                                <div id="cs" key={Math.random()} >DOWN</div>
                                 <div id="cd" key={Math.random()} >{`$${priceDif.toFixed(2)}`}</div>
-                                <div id="cf"  key={Math.random()} >{`per ${itm.pack_size}`}</div>
-                                </>
+                                <div id="cf" key={Math.random()} >{`per ${itm.pack_size}`}</div>
+                            </>
                         } else if (priceDif > 0) {
                             return <>
-                                <div id="ca"  key={Math.random()} >{itm.item_name}</div>
-                                <div id="cs"  key={Math.random()} >UP</div>
+                                <div id="ca" key={Math.random()} >{itm.item_name}</div>
+                                <div id="cs" key={Math.random()} >UP</div>
                                 <div id="cd" key={Math.random()} >{`$${priceDif.toFixed(2)}`}</div>
-                                <div id="cf"  key={Math.random()} >{`per ${itm.pack_size}`}</div>
-                                </>
+                                <div id="cf" key={Math.random()} >{`per ${itm.pack_size}`}</div>
+                            </>
                         } else {
                             return <>
-                                <div id="ca"  key={Math.random()} >{itm.item_name}</div>
-                                <div id="cs"  key={Math.random()} >NO CHANGE</div>
+                                <div id="ca" key={Math.random()} >{itm.item_name}</div>
+                                <div id="cs" key={Math.random()} >NO CHANGE</div>
                                 <div id="cd" key={Math.random()} >{`$${priceDif.toFixed(2)}`}</div>
-                                <div id="cf"  key={Math.random()} >{`per ${itm.pack_size}`}</div>
-                                </>
+                                <div id="cf" key={Math.random()} >{`per ${itm.pack_size}`}</div>
+                            </>
 
                         }
                     }
@@ -70,55 +70,50 @@ function PriceListCompare(props) {
 
     // choose price list to compare to most recent. default to second most recent.
     const displaySelected = () => {
-        if (selectCompare.id !== undefined) { 
-            console.log("gotcha my dude!!!!!")
+        if (selectCompare.id !== undefined) {
             findPL()
             return <PriceList key={comparePL.id} plInfo={comparePL} />
-        }else{
+        } else {
             choosePL();
             return <PriceList key={comparePL.id} plInfo={comparePL} />
         }
-            
+
     }
 
     const findPL = () => {
         if (cpl !== undefined) {
-            console.log("im everywhere")
-            return cpl.filter(pl => pl.id === selectCompare.id).map(pl=> {
+            return cpl.filter(pl => pl.id === selectCompare.id).map(pl => {
                 compareDate = pl.date
                 comparePL = pl
-                console.log(comparePL)
-                console.log(compareDate)
             })
         }
     }
 
     const choosePL = () => {
-        // build in a trigger that defaults to second most recent price list if another price list is not selected. 
-            if (cpl !== undefined) {
-                return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId)
-                    .map(pl => {
-                        console.log(pl)
-                        if (pl.date > compareDate && pl.date !== date) {
-                            compareDate = pl.date
-                            comparePL = pl
-                        }
-                    })
-            }
+        if (cpl !== undefined) {
+            return cpl.filter(pl => pl.user_id === usrId && pl.vendor_id === vndrId)
+                .map(pl => {
+                    // console.log(pl)
+                    if (pl.date > compareDate && pl.date !== date) {
+                        compareDate = pl.date
+                        comparePL = pl
+                    }
+                })
+        }
     }
     // ^
 
     return (
         <>
-        <div className="GridPLC" >
-         <span className="plc_title">Compare</span>
-            <div className="col" >{displayMostRecent()}</div>
-      
-            <div className="col" >{displaySelected()}</div>
-        </div > 
-        <div className="GridPLCBottom" >
-            <div className="row" >{compareInvoices()} </div>
-        </div >
+            <div className="GridPLC" >
+                <span className="plc_title">Compare</span>
+                <div className="col" >{displayMostRecent()}</div>
+
+                <div className="col" >{displaySelected()}</div>
+            </div >
+            <div className="GridPLCBottom" >
+                <div className="row" >{compareInvoices()} </div>
+            </div >
         </>
     );
 }

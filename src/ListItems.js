@@ -49,10 +49,10 @@ const ListItems = (props) => {
     }
 
     return (
-        <>
+        <div className="colPLI">
             {showItems()}
             
-        </>
+        </div>
     );
 }
 

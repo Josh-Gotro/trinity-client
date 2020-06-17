@@ -17,7 +17,6 @@ function Pl(props) {
 
     const holler = (pl) => {
         setSelectCompare(pl)
-        console.log(selectCompare)
     }    
  
 

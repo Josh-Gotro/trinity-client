@@ -12,11 +12,11 @@ function Item(props) {
     }
 
     return (
-        <div className="colPLI">
-            <div className="aa"> {props.itemName} </div> 
-            <div className="dd"> {`$${props.itemDetails.price}`}</div>
-            <div className="ff"> {packSize()}</div>
-        </div>
+        <>
+            <div id="aa"> {props.itemName} </div> 
+            <div id="dd"> {`$${props.itemDetails.price}`}</div>
+            <div id="ff"> {packSize()}</div>
+        </>
     );
 }
 

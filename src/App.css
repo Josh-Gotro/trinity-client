@@ -486,21 +486,21 @@ p {
   grid-template-columns: [a]1fr [b]1fr [c]1fr [d];
   padding-bottom: 5px;
 }
-.aa {
+#aa {
   color: #ed1b70;
   place-self: end;
   align-self: start;
   grid-column-start: a;
 }
 
-.dd {
+#dd {
   color: #ed1b70;
   place-self: center;
   align-self: start;
   grid-column-start: b;
 }
 
-.ff {
+#ff {
   color: #ed1b70;
   place-self: start;
   align-self: start;
