@@ -1,18 +1,70 @@
-import React from 'react'
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { currentUser } from './services/Atom';
+import { useRecoilState } from 'recoil';
+import './customCSS/Nav.css';
 
-const headerStyle = {
-    background: "black",
-    height: "15vh",
-    // lineHeight: "15vh"
-}
-function Header(props) {
+function Header() {
+    const [person, setPerson] = useRecoilState(currentUser);
+    // let person = useRecoilValue(currentUser)
+    let history = useHistory();
+
+    const toggleNavLink = () => {
+        
+        if (person !== "") {
+            // logoutUser()
+            return <>
+                <Link to="/vendors">
+                    <div>Vendors</div>
+                </Link>
+
+                <Link to="/items">
+                    <div>Items</div>
+                </Link>
+
+                <Link to="/pricelists">
+                    <div>Price Lists</div>
+                </Link>
+
+                <Link  className="Title" to="/">
+                    <h1 >Mirpoix</h1>
+                </Link>
+
+                {/* {greetUser()} */}
+
+                <div className="Logout" onClick={logoutUser}>{greetUser()}</div>
+            </>
+        } else {
+            return <>
+                <Link className="Title" to="/">
+                    <h1 >Mirpoix</h1>
+                </Link>
+            </>
+        }
+    }
+
+    const logoutUser = () => {
+        // console.log(person)
+        localStorage.removeItem("token");
+        setPerson("")
+        toggleNavLink();
+        history.push('/')
+    }
+
+    const greetUser = () => {
+        return person !== undefined ?  `*${person.username}* Logout` : "Login";
+    }
+
     return (
-        <div style={headerStyle}>
-            <h1 style={{ color: "white" }}>JWT Auth Setup</h1>
-            <button className="ui button" onClick={() => props.handleFormSwitch("signUp")}>Sign Up</button>
-            <button className="ui button" onClick={() => props.handleFormSwitch("login")}>Log In</button>
-        </div>
+        <>
+            <nav className="nav">  
+                {toggleNavLink()}
+            </nav>        
+        </>
+
+
     )
 }
 
 export default Header;
+

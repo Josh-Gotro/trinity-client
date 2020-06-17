@@ -1,4 +1,4 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
 }
@@ -7,21 +7,611 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  background: url("./images/white_tile.jpg") no-repeat center center fixed;
+  background-color: #cccccc;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: Roboto Condensed;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* Welcome and Login Screens */
+.HeroPage {
+  display: inline-grid;
+  grid-template-columns:
+    [col-1-start]15%
+    [col-1-end col-2-start]15%
+    [col-2-end col-3-start]auto
+    [col-3-end col-4-start]20%
+    [col-4-end col-5-start]20%
+    [col-5-end col-6-start]10%
+    [col-6-end];
+
+  grid-template-rows:
+    [row-1-start]auto
+    [row-1-end row-2-start]32%
+    [row-2-end row-3-start]7%
+    [row-3-end row-4-start]7%
+    [row-4-end row-5-start]20%
+    [row-5-end row-6-start]15%
+    [row-6-end];
+  background: url("./images/pass.jpg") no-repeat top center fixed;
+  background-size: contain;
+  min-height: 80vh;
+  height: 100%;
+  width: 100%;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.LoginGrid {
+  grid-column-start: col-4-end;
+  grid-row-start: row-1-end;
+  align-items: left;
+  text-align: left;
+  padding-top: 5vmin;
+  /* padding-right: 20px; */
+  text-decoration: none;
+  display: inline-block;
+}
+
+.AccentStripe {
+  grid-column-start: col-5-start;
+  grid-row-start: row-1-start;
+  grid-row-end: row-6-end;
+  background-color: #1c3f94;
+  /* box-shadow: 10px 15px #ed1b70; */
+  /* opacity: .98; */
+  height: 100%;
+}
+
+/* main title */
+h1 {
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
 }
 
-.App-link {
-  color: #09d3ac;
-} */
+.FormTitle {
+  color: #ed1b70;
+}
+
+h3 {
+  align-items: center;
+  text-align: center;
+}
+
+.FormTitle2 {
+  color: #ed1b70;
+  place-self: center;
+  align-self: start;
+  grid-column-start: a;
+  grid-column-end: d;
+  padding-bottom: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 5px 5px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: none;
+  color: rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  background-color: whitesmoke;
+  opacity: 0.95;
+  outline: none;
+}
+
+input[type="password"] {
+  width: 100%;
+  padding: 5px 5px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: none;
+  color: rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  background-color: whitesmoke;
+  opacity: 0.95;
+  outline: none;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 5px 5px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: none;
+  color: rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  background-color: whitesmoke;
+  opacity: 0.95;
+  outline: none;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 5px 5px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: none;
+  color: rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  background-color: whitesmoke;
+  opacity: 0.95;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 5px 5px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: none;
+  color: rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  background-color: whitesmoke;
+  opacity: 0.95;
+  outline: none;
+  cursor: pointer;
+}
+
+.select {
+  width: 100%;
+  padding: 5px 5px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: none;
+  color: rgb(100, 100, 224);
+  border-bottom: 3px solid #ed1b70;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  background-color: whitesmoke;
+  opacity: 0.95;
+  outline: none;
+}
+
+input::placeholder {
+  color: rgb(100, 100, 224);
+  opacity: 0.6;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+p {
+  font-size: 14px;
+}
+
+.LoginButton1 {
+  grid-column-start: col-5-start;
+  grid-row-start: row-2-end;
+  background-color: #ed1b70;
+  color: whitesmoke;
+  /* padding: 12px 45px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* margin: 10%; */
+  font-size: 14px;
+  min-height: 30px;
+  min-width: 100%;
+  align-self: top;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  width: 75%;
+  outline: none;
+  cursor: pointer;
+}
+
+.LoginButtonSwap {
+  grid-column-start: col-4-end;
+  grid-row-start: row-3-end;
+  /* background-color: rgb(163, 168, 172); */
+  color: whitesmoke;
+  /* padding: 12px 45px; */
+  min-width: 100%;
+  text-align: center;
+  text-decoration: underline;
+  display: inline-block;
+  font-size: 15px;
+  align-self: top;
+  text-align: left;
+  transition-duration: 0.4s;
+  border: none;
+  outline: none;
+  /* margin-top: 0.1%; */
+  margin-bottom: 50%;
+  cursor: pointer;
+  padding-left: 5px;
+}
+
+.BasicButton {
+  grid-column-start: col-5-start;
+  grid-row-start: row-2-end;
+  background-color: whitesmoke;
+  color: #ed1b70;
+  /* padding: 12px 45px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* margin: 10%; */
+  font-size: 14px;
+  min-height: 30px;
+  min-width: 100%;
+  align-self: top;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  width: 75%;
+  outline: none;
+  cursor: pointer;
+}
+
+.deleteButton {
+  grid-column-start: a;
+  grid-column-end: d;
+  background-color: transparent;
+  color: #ed1b70;
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  align-self: center;
+  justify-self: center;
+  transition-duration: 0.4s;
+  width: 75%;
+  outline: none;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.unhidden {
+  display: inline;
+}
+
+.VendorsGrid {
+  border-top: 8px solid rgb(163, 168, 172);
+  border-bottom: 8px solid rgb(163, 168, 172);
+  color: transparent;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  grid-template-columns:
+    [col-1-start]25%
+    [col-1-end col-2-start]auto
+    [col-2-end col-3-start]25%
+    [col-3-end];
+
+  opacity: 0.99;
+  align-items: center;
+  min-height: 8vh;
+  color: black;
+  /* text-align: center; */
+}
+
+.Side {
+  background-color: rgb(163, 168, 172);
+  color: whitesmoke;
+  min-width: stretch;
+  height: 100%;
+  width: 100%;
+}
+
+.List {
+  /* border-bottom: 1px solid whitesmoke; */
+  height: 30px;
+  width: 100%;
+  background: #1c3f94;
+  color: rgb(163, 168, 172);
+  align-content: center;
+  align-self: center;
+  text-align: center;
+  opacity: 1;
+  align-items: center;
+  display: inline-block;
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.ListDates {
+  border-bottom: 1px solid #1c3f94;
+  height: 30px;
+  width: 100%;
+  background: rgb(163, 168, 172);
+  color: #1c3f94;
+  align-content: center;
+  align-self: center;
+  text-align: center;
+  opacity: 1;
+  align-items: center;
+  display: inline-block;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.display_card {
+  min-height: 400px;
+  box-shadow: 0 4px 8px 0 rgb(163, 168, 172);
+  box-shadow: 10px 15px #ed1b70;
+  background-color: #1c3f94;
+  color: whitesmoke;
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  opacity: 0.9;
+  margin: 20px;
+}
+
+.display_card2 {
+  min-height: 400px;
+  box-shadow: 10px 15px rgb(163, 168, 172);
+  background-color: #1c3f94;
+  color: whitesmoke;
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  opacity: 0.9;
+  margin: 20px;
+  grid-column-start: col-2-end;
+}
+
+.display_card_item {
+  align-items: center;
+  min-width: 150px;
+  max-width: 150px;
+  min-height: 100px;
+  box-shadow: 0 4px 8px 0 rgb(163, 168, 172);
+  box-shadow: 10px 15px rgb(163, 168, 172);
+  box-shadow: 5px 10px #ed1b70;
+  background-color: #1c3f94;
+  color: whitesmoke;
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  opacity: 0.9;
+  /* width: max-content; */
+  margin: 20px;
+}
+
+.display_pl {
+  display: grid;
+  grid-template-columns:
+    [col-1-start]30%
+    [col-1-end col-2-start]30%
+    [col-2-end col-3-start]30%
+    [col-3-end col-4-start]auto
+    [col-4-end];
+
+  grid-template-rows:
+    [row-1-start]20%
+    [row-1-end row-2-start]20%
+    [row-2-end row-3-start]20%
+    [row-3-end row-4-start]20%
+    [row-4-end row-5-start]20%
+    [row-5-end];
+
+  align-items: center;
+  min-width: 350px;
+  max-width: 350px;
+  min-height: 100px;
+  box-shadow: 0 4px 8px 0 rgb(163, 168, 172);
+  box-shadow: 10px 15px rgb(163, 168, 172);
+  box-shadow: 5px 10px #ed1b70;
+  background-color: #1c3f94;
+  color: whitesmoke;
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  opacity: 0.9;
+  /* width: max-content; */
+  margin: 20px;
+}
+
+.Items_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.NewForm {
+  background-color: whitesmoke;
+  color: rgb(100, 100, 224);
+  padding: 12px 45px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  align-self: center;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  width: 100%;
+}
+
+.NewForm:hover {
+  background-color: rgb(100, 100, 224); /* Green */
+  color: white;
+  /* opacity: 1; */
+}
+
+.GridPLC {
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  /* grid-template-columns: repeat( auto-fit, minmax(1fr, 1fr) ); */
+  grid-template-columns: [a]1fr [b]1fr [c];
+}
+
+.plc_title {
+  font-size: 18px;
+  place-self: center;
+  grid-column-start: a;
+  grid-column-end: c;
+  padding-bottom: 15px;
+}
+
+.col {
+  /* place-self: center; */
+  align-self: stretch;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: [a]1fr [b]1fr [c]1fr [d];
+}
+
+.colD {
+  place-self: center;
+  align-self: start;
+  border-bottom: 20px 20px whitesmoke;
+  grid-column-start: a;
+  grid-column-end: d;
+  padding-bottom: 5px;
+}
+
+.GridPLCBottom {
+  padding: 15px;
+  border-top: 20px 20px #ed1b70;
+  margin-top: 50px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto;
+}
+
+.row {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: [a]1fr [b]1fr [c]1fr [d]1fr [e];
+}
+
+#ca {
+  border-top: 2px solid rgb(163, 168, 172);
+  color: #ed1b70;
+  padding-bottom: 15px;
+  grid-column-start: a;
+}
+
+#cs {
+  border-top: 2px solid rgb(163, 168, 172);
+  color: #ed1b70;
+  padding-bottom: 15px;
+  grid-column-start: b;
+}
+
+#cd {
+  border-top: 2px solid rgb(163, 168, 172);
+  color: #ed1b70;
+  padding-bottom: 15px;
+  grid-column-start: c;
+}
+
+#cf {
+  border-top: 2px solid rgb(163, 168, 172);
+  margin-right: 40px;
+  color: #ed1b70;
+  padding-bottom: 15px;
+  grid-column-start: d;
+}
+
+.colPLI {
+  /* place-self: center; */
+  align-self: center;
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: [a]1fr [b]1fr [c]1fr [d];
+  padding-bottom: 5px;
+}
+#aa {
+  color: whitesmoke;
+  place-self: end;
+  align-self: start;
+  grid-column-start: a;
+}
+
+#dd {
+  color: whitesmoke;
+  place-self: center;
+  align-self: start;
+  grid-column-start: b;
+}
+
+#ff {
+  color: whitesmoke;
+  place-self: start;
+  align-self: start;
+  grid-column-start: c;
+}
+
+.NewPLForm {
+  padding-left: 45px;
+  padding-right: 45px;
+  padding-bottom: 45px;
+}
+
+.BasicButton2 {
+  background-color: whitesmoke;
+  color: #ed1b70;
+  margin-top: 25px;
+  padding: 12px 45px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* margin: 10%; */
+  font-size: 14px;
+  min-height: 30px;
+  min-width: 100%;
+  align-self: top;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  width: 75%;
+  outline: none;
+  cursor: pointer;
+}
+
+.plPage {
+  /* place-self: center; */
+  align-self: center;
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: [a]1fr [b]1fr [c]1fr [d];
+  padding-bottom: 5px;
+
+
+  align-items: center;
+  min-width: 350px;
+  max-width: 350px;
+  min-height: 100px;
+  box-shadow: 0 4px 8px 0 rgb(163, 168, 172);
+  box-shadow: 10px 15px rgb(163, 168, 172);
+  box-shadow: 5px 10px #ed1b70;
+  background-color: #1c3f94;
+  color: whitesmoke;
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  opacity: 0.9;
+  /* width: max-content; */
+  margin: 20px;
+}

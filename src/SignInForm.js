@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
+import { useHistory } from 'react-router-dom';
+import { useForm } from "react-hook-form";
 
 function SignInForm(props) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    let history = useHistory();
+    const { register, handleSubmit, errors } = useForm();
 
     const handleUsernameChange = (evt) => {
         setUsername(evt.target.value)
@@ -12,8 +16,7 @@ function SignInForm(props) {
         setPassword(evt.target.value)
     }
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault()
+    const onSubmit = (evt) => {
         fetch(`http://localhost:3001/users`, {
             method: "POST",
             headers: {
@@ -25,34 +28,40 @@ function SignInForm(props) {
                 password
             })
         })
-            .then(resp => resp.json())
-            .then(data => {
-                localStorage.setItem("token", data.jwt)
-                props.handleLogin(data.user)
-            })
+        .then(resp => resp.json())
+        .then(data => {
+            localStorage.setItem("token", data.jwt)
+            props.handleLogin(data.user)
+        })
         setUsername("")
         setPassword("")
+        history.push('/vendors')
     }
-    const formDivStyle = {
-        margin: "auto",
-        padding: "20px",
-        width: "80%"
-    }
-
-    return (
-        <div style={formDivStyle}>
-            <h1>Sign Up</h1>
-            <form className="ui form" onSubmit={handleSubmit}>
+    // const formDivStyle = {
+    //     margin: "auto",
+    //     padding: "20px",
+    //     width: "80%"
+    // }
+    
+    return(
+        <div className="LoginGrid">
+        {/* <div style={formDivStyle}> */}
+            <h2>Mirpoix</h2>
+            <p> We help chefs</p>
+            <p> make smarter purchases.</p>
+            <form className="LoginForm" onSubmit={handleSubmit(onSubmit)}>
                 <div className="field">
-                    <label>Username</label>
-                    <input value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
+                    <label></label>
+                    <input name="username" ref={register({ required: true })} value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
+                    {errors.contact && <p>please choose a user name </p>}
                 </div>
                 <div className="field">
-                    <label>Password</label>
-                    <input value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
-                </div>
 
-                <button className="ui button" type="submit">Submit</button>
+                    <input name="password" ref={register({ required: true })} value={password} onChange={handlePasswordChange} type="password" placeholder="password"/>
+                    {errors.contact && <p>please choose a password </p>}
+                </div>
+                
+                <button className="LoginButton1" > Sign Up</button>
             </form>
         </div>
     )
