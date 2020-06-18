@@ -3,6 +3,7 @@ import Vendor from './Vendor'
 import PriceListCompare from './PriceListCompare'
 import NewVendorForm from './NewVendorForm';
 import NewPLForm from './NewPLForm';
+import VendorInfo from './VendorInfo';
 import { currentUser, selectedVendor, currentPriceLists, currentVendors, liveViewPl } from './services/Atom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useHistory } from 'react-router-dom';
@@ -19,7 +20,6 @@ function VendorsList() {
     const [showPL, setShowPL] = useState(false);
 
     let crrntUser = useRecoilValue(currentUser);
-    let lvp = useRecoilValue(liveViewPl)
     let history = useHistory();
 
     useEffect(() => {
@@ -119,11 +119,11 @@ function VendorsList() {
                 {showPLForm ? <NewPLForm key={Math.random()} toggle={togglePLForm} userInfo={crrntUser} fetchPL={fetchPL} fetchV={fetchVendors}/> : null}
             </div>
             <div className={showPL ? "display_card " : "hidden"}>
-                {showPL ? <PriceListCompare  key={Math.random()} currentVendor={curVend} userInfo={crrntUser} /> : null}
+                {showPL ? <PriceListCompare  key={curVend.id} currentVendor={curVend} userInfo={crrntUser} /> : null}
             </div>
-            {/* <div className={showPLForm ? "display_card2 " : "hidden"}>
-                {showPLForm ? <PriceList key={Math.random()} plInfo={lvp} userInfo={crrntUser} /> : null}
-            </div> */}
+            <div className={showPL ? "display_card2 " : "hidden"}>
+                {showPL ? <VendorInfo key={Math.random()} vendors={vendors} userInfo={crrntUser} /> : null}
+            </div>
             
         </div>
     );
