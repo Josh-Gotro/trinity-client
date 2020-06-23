@@ -43,8 +43,8 @@ function LoginForm(props){
         <div className="LoginGrid">
         
             {/* <div className="NewForm"> */}
-            <h2>Mirpoix</h2>
-            <p> We help chefs</p>
+            <h2>mirpoix</h2>
+            <p> We help restaurants</p>
             <p> make smarter purchases.</p>
             
             <form className="ui form" onSubmit={handleSubmit(onSubmit)}>

@@ -47,11 +47,12 @@ const PriceLists = () => {
     const displayPL = () => {
         // console.log(priceLists)
         if (priceLists !== undefined && usr.id !== undefined) {
-            return priceLists.filter(pl => pl.user_id === usr.id)
-                .map(pl => {
+                let filteredPriceLists =  priceLists.filter(pl => pl.user_id === usr.id)
+                let sortedItems = filteredPriceLists.sort((a, b) => (a.item_name > b.item_name) ? 1 : (a.item_name === b.item_name) ? ((a.price > b.price) ? 1 : -1) : -1)
+                return sortedItems.map(pl => {
                     // console.log(pl)
                     return <div key={Math.random()} className="plPage">
-                        <h4 className="FormTitle2" >{pl.vendor.name}</h4>
+                        {/* <h4 className="FormTitle2" >{pl.vendor.name}</h4> */}
                         <PriceList key={pl.id} plInfo={pl} />
                         <button className="deleteButton" onClick={() => deleteMe(pl.id)}>Delete PL</button>
                         </div>
@@ -59,6 +60,7 @@ const PriceLists = () => {
         }
         return null
     }
+    
 
     const deleteMe = (id) => {
         fetchDeletePL(id)

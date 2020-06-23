@@ -27,17 +27,17 @@ function Header() {
                 </Link>
 
                 <Link  className="Title" to="/">
-                    <h1 >Mirpoix</h1>
+                    <h1 >mirpoix</h1>
                 </Link>
 
                 {/* {greetUser()} */}
 
-                <div className="Logout" onClick={logoutUser}>{greetUser()}</div>
+                <div className="Logout" onClick={logoutUser}>Logout</div>
             </>
         } else {
             return <>
                 <Link className="Title" to="/">
-                    <h1 >Mirpoix</h1>
+                    <h1 >mirpoix</h1>
                 </Link>
             </>
         }
@@ -51,9 +51,9 @@ function Header() {
         history.push('/')
     }
 
-    const greetUser = () => {
-        return person !== undefined ?  `*${person.username}* Logout` : "Login";
-    }
+    // const greetUser = () => {
+    //     return person !== undefined ?  `*${person.username}* Logout` : "Login";
+    // }
 
     return (
         <>
