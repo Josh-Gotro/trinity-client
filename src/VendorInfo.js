@@ -3,7 +3,7 @@ import React from 'react';
 const VendorInfo = (props) => {
 
     const listReps = () => {
-        console.log(props)
+        // console.log(props)
         if (props.vendors !== undefined) {
             return props.vendors.map(vendor => {
                 if (props.userInfo.id === vendor.user_id ) {

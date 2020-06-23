@@ -41,17 +41,17 @@ function PriceListCompare(props) {
                         let priceDif = itm.price - i.price
                         if (priceDif < 0) {
                             return <>
-                                <div id="ca" key={Math.random()} >{itm.item_name}</div>
-                                <div id="cs" key={Math.random()} >DOWN</div>
-                                <div id="cd" key={Math.random()} >{`$${priceDif.toFixed(2)}`}</div>
-                                <div id="cf" key={Math.random()} >{`per ${itm.pack_size}`}</div>
+                                <div style={{color: "rgb(160, 255, 105)"}} id="ca" key={Math.random()} >{itm.item_name}</div>
+                                <div style={{color: "rgb(160, 255, 105)"}} id="cs" key={Math.random()} >DOWN</div>
+                                <div style={{color: "rgb(160, 255, 105)"}} id="cd" key={Math.random()} >{`$${priceDif.toFixed(2)}`}</div>
+                                <div style={{color: "rgb(160, 255, 105)"}} id="cf" key={Math.random()} >{`per ${itm.pack_size}`}</div>
                             </>
                         } else if (priceDif > 0) {
                             return <>
-                                <div id="ca" key={Math.random()} >{itm.item_name}</div>
-                                <div id="cs" key={Math.random()} >UP</div>
-                                <div id="cd" key={Math.random()} >{`$${priceDif.toFixed(2)}`}</div>
-                                <div id="cf" key={Math.random()} >{`per ${itm.pack_size}`}</div>
+                                <div style={{color: "#ed1b70"}} id="ca" key={Math.random()} >{itm.item_name}</div>
+                                <div style={{color: "#ed1b70"}} id="cs" key={Math.random()} >UP</div>
+                                <div style={{color: "#ed1b70"}} id="cd" key={Math.random()} >{`$${priceDif.toFixed(2)}`}</div>
+                                <div style={{color: "#ed1b70"}} id="cf" key={Math.random()} >{`per ${itm.pack_size}`}</div>
                             </>
                         } else {
                             return <>
@@ -67,14 +67,16 @@ function PriceListCompare(props) {
             })
         }
     }
-
+    
     // choose price list to compare to most recent. default to second most recent.
     const displaySelected = () => {
         if (selectCompare.id !== undefined) {
             findPL()
+            console.log(comparePL)
             return <PriceList key={comparePL.id} plInfo={comparePL} />
         } else {
             choosePL();
+            console.log(comparePL)
             return <PriceList key={comparePL.id} plInfo={comparePL} />
         }
 
@@ -106,7 +108,7 @@ function PriceListCompare(props) {
     return (
         <>
             <div className="GridPLC" >
-                <span className="plc_title">Compare</span>
+                <h1 className="FormTitle3">Compare</h1>
                 <div className="col" >{displayMostRecent()}</div>
 
                 <div className="col" >{displaySelected()}</div>

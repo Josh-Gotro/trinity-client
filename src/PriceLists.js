@@ -52,7 +52,7 @@ const PriceLists = () => {
                 return sortedItems.map(pl => {
                     // console.log(pl)
                     return <div key={Math.random()} className="plPage">
-                        <h4 className="FormTitle2" >{pl.vendor.name}</h4>
+                        {/* <h4 className="FormTitle2" >{pl.vendor.name}</h4> */}
                         <PriceList key={pl.id} plInfo={pl} />
                         <button className="deleteButton" onClick={() => deleteMe(pl.id)}>Delete PL</button>
                         </div>

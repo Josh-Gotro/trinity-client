@@ -7,6 +7,7 @@ const AboutPage = () => {
         <div className="AboutGrid">
             <div className="display_card3">
                 <h1 className='aboutTitle'>Rails 6</h1>
+                <h2 className='aboutTitle2'>PostgreSQL</h2>
                 <h2 className='aboutTitle2'>JWT Web Tokens</h2>
                 <img id="aboutImage"  src={require('./images/rails.png')} /> 
                 <img id="aboutImage2" src={require('./images/JWT.png')} /> 
@@ -26,6 +27,7 @@ const AboutPage = () => {
             <div className="display_card4">
                 <h1 className='aboutTitle'>React</h1>
                 <h2 className='aboutTitle2'>Hooks + Recoil Hooks</h2>
+                <h2 className='aboutTitle2'>React Hook Form</h2>
                 <img id="aboutImage"  src={require('./images/react.png')} /> 
                 <img id="aboutImage2"  src={require('./images/atom.png')} /> 
             </div>

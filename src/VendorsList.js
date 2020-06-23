@@ -66,12 +66,17 @@ function VendorsList() {
 
     const handleVendorClick = (e) => {
         // console.log(e)
-        if (showPL === true && curVend.id === e.id){ 
-            setCurVend(e)
-            setShowPL(prev => !prev)
-        } else {
-            setCurVend(e)
-            togglePL()
+        if (e.price_lists.length >= 1 && e.price_lists.length !== undefined  ){ 
+            if (showPL === true && curVend.id === e.id){
+                setCurVend(e)
+                setShowPL(prev => !prev)
+            } else {
+                setCurVend(e)
+                togglePL()
+            }
+        }else{
+            alert("Make some price lists!")
+            togglePLForm()
         }
     }
 
