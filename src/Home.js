@@ -77,15 +77,15 @@ function Home() {
     return (
         <>
             <div className="HeroPage">
-            <div className="AccentStripe">
-            </div>
+                <div className="AccentStripe">
+                </div>
                 {/* <button onClick={handleAuthClick} className="hiddefgjhdfg">Access Authorized Route</button><br></br> */}
 
                 {renderForm()}
-        
-                {loginToggle ? <button className="LoginButtonSwap" onClick={() => handleFormSwitch("login")}> log in</button> : null }
+
+                {loginToggle ? <button className="LoginButtonSwap" onClick={() => handleFormSwitch("login")}> log in</button> : null}
                 {loginToggle ? null : <button className="LoginButtonSwap" onClick={() => handleFormSwitch("signUp")}> sign up</button>}
-            
+
             </div>
         </>
     );

@@ -10,7 +10,7 @@ function Header() {
     let history = useHistory();
 
     const toggleNavLink = () => {
-        
+
         if (person !== "") {
             // logoutUser()
             return <>
@@ -26,7 +26,7 @@ function Header() {
                     <div>Price Lists</div>
                 </Link>
 
-                <Link  className="Title" to="/">
+                <Link className="Title" to="/">
                     <h1 >mirpoix</h1>
                 </Link>
 
@@ -57,9 +57,9 @@ function Header() {
 
     return (
         <>
-            <nav className="nav">  
+            <nav className="nav">
                 {toggleNavLink()}
-            </nav>        
+            </nav>
         </>
 
 

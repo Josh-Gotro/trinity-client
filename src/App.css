@@ -434,10 +434,10 @@ p {
   opacity: 0.9;
   /* width: max-content; */
   margin: 20px;
-padding: 15px;
+  padding: 15px;
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: [a]1fr [b]1fr [c]1fr [d] ;
+  grid-template-columns: [a]1fr [b]1fr [c]1fr [d];
 }
 
 .display_pl {
@@ -782,7 +782,7 @@ h1 {
 }
 
 .aboutTitle {
-  color: rgb(163, 168, 172);;
+  color: rgb(163, 168, 172);
   align-items: center;
   text-align: center;
   grid-column-start: a;
@@ -792,16 +792,38 @@ h1 {
 .aboutTitle2 {
   grid-column-start: a;
   grid-column-end: c;
-  color: rgb(163, 168, 172);;
+  color: rgb(163, 168, 172);
   align-items: center;
   text-align: center;
 }
 
-#UUA{ grid-row-start: c;  color: #ed1b70; font-size: 55px;}
-#UUS{ grid-row-start: f; color: rgb(163, 168, 172); font-size: 40px;}
-#UUD{ grid-row-start: g; color: rgb(163, 168, 172); font-size: 35px;}
-#UUF{ grid-row-start: h; color: rgb(163, 168, 172); font-size: 35px;}
-#UUH{ grid-row-start: i; color: rgb(163, 168, 172); font-size: 30px;}
-#UUI{ grid-row-start: j; color: rgb(163, 168, 172); font-size: 30px;}
-
-
+#UUA {
+  grid-row-start: c;
+  color: #ed1b70;
+  font-size: 55px;
+}
+#UUS {
+  grid-row-start: f;
+  color: rgb(163, 168, 172);
+  font-size: 40px;
+}
+#UUD {
+  grid-row-start: g;
+  color: rgb(163, 168, 172);
+  font-size: 35px;
+}
+#UUF {
+  grid-row-start: h;
+  color: rgb(163, 168, 172);
+  font-size: 35px;
+}
+#UUH {
+  grid-row-start: i;
+  color: rgb(163, 168, 172);
+  font-size: 30px;
+}
+#UUI {
+  grid-row-start: j;
+  color: rgb(163, 168, 172);
+  font-size: 30px;
+}

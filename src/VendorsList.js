@@ -59,29 +59,29 @@ function VendorsList() {
 
     const myVendors = () => {
         if (vendors.length > 0 && crrntUser !== undefined) {
-             return vendors.filter(vendor => vendor.user_id === crrntUser.id)
-                 .map(vendor => <div key={Math.random()}><Vendor key={vendor.id} vendorPL={curVend} vendorClick={handleVendorClick} vendorInfo={vendor} /></div>)
-         } 
+            return vendors.filter(vendor => vendor.user_id === crrntUser.id)
+                .map(vendor => <div key={Math.random()}><Vendor key={vendor.id} vendorPL={curVend} vendorClick={handleVendorClick} vendorInfo={vendor} /></div>)
+        }
     }
 
     const handleVendorClick = (e) => {
         // console.log(e)
-        if (e.price_lists.length >= 1 && e.price_lists.length !== undefined  ){ 
-            if (showPL === true && curVend.id === e.id){
+        if (e.price_lists.length >= 1 && e.price_lists.length !== undefined) {
+            if (showPL === true && curVend.id === e.id) {
                 setCurVend(e)
                 setShowPL(prev => !prev)
             } else {
                 setCurVend(e)
                 togglePL()
             }
-        }else{
+        } else {
             alert("Make some price lists!")
             togglePLForm()
         }
     }
 
     const toggleVendorForm = () => {
-// -----------> added the !== statement in order to catch blank logins 
+        // -----------> added the !== statement in order to catch blank logins 
         if (crrntUser !== undefined && crrntUser.id) {
             setShowPL(false)
             setShowPLForm(false)
@@ -92,7 +92,7 @@ function VendorsList() {
         };
     }
     const togglePLForm = () => {
-// -----------> added the !== statement in order to catch blank logins 
+        // -----------> added the !== statement in order to catch blank logins 
         if (crrntUser !== undefined && crrntUser.id) {
             setShowPLForm(prev => !prev)
             setShowVendorForm(false)
@@ -121,15 +121,15 @@ function VendorsList() {
                 {showVendorForm ? <NewVendorForm key={Math.random()} toggle={toggleVendorForm} userInfo={crrntUser} /> : null}
             </div>
             <div className={showPLForm ? "display_card " : "hidden"}>
-                {showPLForm ? <NewPLForm key={Math.random()} toggle={togglePLForm} userInfo={crrntUser} fetchPL={fetchPL} fetchV={fetchVendors}/> : null}
+                {showPLForm ? <NewPLForm key={Math.random()} toggle={togglePLForm} userInfo={crrntUser} fetchPL={fetchPL} fetchV={fetchVendors} /> : null}
             </div>
             <div className={showPL ? "display_card " : "hidden"}>
-                {showPL ? <PriceListCompare  key={curVend.id} currentVendor={curVend} userInfo={crrntUser} /> : null}
+                {showPL ? <PriceListCompare key={curVend.id} currentVendor={curVend} userInfo={crrntUser} /> : null}
             </div>
             <div className={showPL ? "display_card2 " : "hidden"}>
                 {showPL ? <VendorInfo key={Math.random()} vendors={vendors} userInfo={crrntUser} /> : null}
             </div>
-            
+
         </div>
     );
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 
@@ -28,11 +28,11 @@ function SignInForm(props) {
                 password
             })
         })
-        .then(resp => resp.json())
-        .then(data => {
-            localStorage.setItem("token", data.jwt)
-            props.handleLogin(data.user)
-        })
+            .then(resp => resp.json())
+            .then(data => {
+                localStorage.setItem("token", data.jwt)
+                props.handleLogin(data.user)
+            })
         setUsername("")
         setPassword("")
         history.push('/vendors')
@@ -42,25 +42,25 @@ function SignInForm(props) {
     //     padding: "20px",
     //     width: "80%"
     // }
-    
-    return(
+
+    return (
         <div className="LoginGrid">
-        {/* <div style={formDivStyle}> */}
+            {/* <div style={formDivStyle}> */}
             <h2>mirpoix</h2>
             <p> We help restaurants</p>
             <p> make smarter purchases.</p>
             <form className="LoginForm" onSubmit={handleSubmit(onSubmit)}>
                 <div className="field">
                     <label></label>
-                    <input name="username" ref={register({ required: true })} value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
+                    <input name="username" ref={register({ required: true })} value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
                     {errors.contact && <p>please choose a user name </p>}
                 </div>
                 <div className="field">
 
-                    <input name="password" ref={register({ required: true })} value={password} onChange={handlePasswordChange} type="password" placeholder="password"/>
+                    <input name="password" ref={register({ required: true })} value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
                     {errors.contact && <p>please choose a password </p>}
                 </div>
-                
+
                 <button className="LoginButton1" > Sign Up</button>
             </form>
         </div>

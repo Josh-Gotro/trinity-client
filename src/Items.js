@@ -15,13 +15,13 @@ const Items = () => {
         gatherItemDetails();
         flatBucket = bucket.flat();
         return flatBucket.sort((a, b) => (a.item_name > b.item_name) ? 1 : (a.item_name === b.item_name) ? ((a.price > b.price) ? 1 : -1) : -1)
-        .map(pl => {
-            // console.log(pl)
-            return <div className="display_card_item">
-            <div id="ddd">{nameDate(pl.item_id, pl.id)}</div> 
-            <Item key={Math.random()} itemName={pl.item_name} itemDetails={pl} /> 
-            </div>
-        })
+            .map(pl => {
+                // console.log(pl)
+                return <div className="display_card_item">
+                    <div id="ddd">{nameDate(pl.item_id, pl.id)}</div>
+                    <Item key={Math.random()} itemName={pl.item_name} itemDetails={pl} />
+                </div>
+            })
     }
 
     const gatherItemDetails = () => {
@@ -39,9 +39,10 @@ const Items = () => {
         console.log(plID)
         if (cpl !== undefined && usr.id !== undefined) {
             return cpl.filter(pl => pl.user_id === usr.id)
-                .map(plst => { console.log(plst)
+                .map(plst => {
+                    console.log(plst)
                     return plst.item_details.map(pl => {
-                        if (plID === pl.id) { 
+                        if (plID === pl.id) {
                             return <div id="ddd">{plst.vendor.name}{<br></br>}{plst.date}</div>
                         }
                     })

@@ -28,15 +28,15 @@ function NewVendorForm(props) {
                 body: JSON.stringify({
                     user_id: crrntUser.id,
                     name: data.name,
-                    description: data.description, 
+                    description: data.description,
                     rep: data.rep,
                     contact: data.contact
                 })
             })
-            .then(resp => resp.json())
-            .then(data => {
+                .then(resp => resp.json())
+                .then(data => {
                     setVendors(prev => [...prev, data]);
-            })
+                })
             props.toggle()
             r.target.reset();
         }
@@ -46,29 +46,29 @@ function NewVendorForm(props) {
 
     return (
         <div className="NewPLForm">
-            
+
             <form onSubmit={handleSubmit(onSubmit)}>
                 <br></br>
                 <h1 className="FormTitle" >New Vendor</h1>
                 <br></br>
                 <label>
                     Company Name:
-                    <input type="text" name="name" ref={register({ required: true })}/> 
+                    <input type="text" name="name" ref={register({ required: true })} />
                     {errors.name && <p>Please enter the name of the vendor. </p>}<br></br>
                     Description:
-                    <input type="text" name="description" ref={register}/><br></br>
+                    <input type="text" name="description" ref={register} /><br></br>
                     Rep Name:
-                    <input type="text" name="rep" ref={register({ required: true })}/>
+                    <input type="text" name="rep" ref={register({ required: true })} />
                     {errors.rep && <p>Enter the name of the main contact for this vendor. </p>}<br></br>
                     Contact Info:
-                    <input type="text" name="contact" ref={register({ required: true })}/>
-                    {errors.contact && <p>Please enter contact info for this vendor rep. </p>}<br></br> 
+                    <input type="text" name="contact" ref={register({ required: true })} />
+                    {errors.contact && <p>Please enter contact info for this vendor rep. </p>}<br></br>
                 </label>
-            
+
                 <input type="submit" value="Save Vendor" />
-                
+
             </form>
-            
+
         </div>
     );
 }

@@ -16,7 +16,7 @@ function NewPLForm(props) {
     const [showAddItem, setAddItem] = useState(false);
     const [newItems, setNewItems] = useState([]);
 
- 
+
     let cpl = useRecoilValue(currentPriceLists)
     let vendors = useRecoilValue(currentVendors)
     let crrntUser = useRecoilValue(currentUser)

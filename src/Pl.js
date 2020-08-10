@@ -9,16 +9,16 @@ function Pl(props) {
 
         if (props.info.price_lists !== undefined) {
             return props.info.price_lists.map(pl => {
-                return <div onClick={() => holler(pl)} className="ListDates" key={pl.id} id={pl.id}>{pl.date}</div> 
+                return <div onClick={() => holler(pl)} className="ListDates" key={pl.id} id={pl.id}>{pl.date}</div>
 
             })
-        } 
+        }
     }
 
     const holler = (pl) => {
         setSelectCompare(pl)
-    }    
- 
+    }
+
 
     return (
         <div >

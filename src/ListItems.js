@@ -6,12 +6,12 @@ const ListItems = (props) => {
 
     const showItems = () => {
         // setShowItem(true)
-        if (props.items.length > 0 ) { 
+        if (props.items.length > 0) {
             return props.items.map(item => {
                 // console.log(item)
-              return <Item key={Math.random()} myID={props.itemDetails.id} itemName={item.name} itemDetails={item} />
+                return <Item key={Math.random()} myID={props.itemDetails.id} itemName={item.name} itemDetails={item} />
 
-            
+
             })
         }
     }
@@ -51,7 +51,7 @@ const ListItems = (props) => {
     return (
         <div className="colPLI">
             {showItems()}
-            
+
         </div>
     );
 }

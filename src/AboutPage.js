@@ -9,8 +9,8 @@ const AboutPage = () => {
                 <h1 className='aboutTitle'>Rails 6</h1>
                 <h2 className='aboutTitle2'>PostgreSQL</h2>
                 <h2 className='aboutTitle2'>JWT Web Tokens</h2>
-                <img id="aboutImage"  src={require('./images/rails.png')} /> 
-                <img id="aboutImage2" src={require('./images/JWT.png')} /> 
+                <img id="aboutImage" src={require('./images/rails.png')} />
+                <img id="aboutImage2" src={require('./images/JWT.png')} />
             </div>
 
             <div className="display_card5">
@@ -21,15 +21,15 @@ const AboutPage = () => {
                 <h3 id="UUH">joshuagauthreaux@gmail.com</h3>
                 {/* <h3 id="UUI">joshuagauthreaux@gmail.com</h3> */}
 
-            
+
             </div>
 
             <div className="display_card4">
                 <h1 className='aboutTitle'>React</h1>
                 <h2 className='aboutTitle2'>Hooks + Recoil Hooks</h2>
                 <h2 className='aboutTitle2'>React Hook Form</h2>
-                <img id="aboutImage"  src={require('./images/react.png')} /> 
-                <img id="aboutImage2"  src={require('./images/atom.png')} /> 
+                <img id="aboutImage" src={require('./images/react.png')} />
+                <img id="aboutImage2" src={require('./images/atom.png')} />
             </div>
 
 
